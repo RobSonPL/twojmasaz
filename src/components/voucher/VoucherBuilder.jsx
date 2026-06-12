@@ -76,35 +76,43 @@ export default function VoucherBuilder({ services = [] }) {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [voucherCode, setVoucherCode] = useState('');
+  const [checkoutError, setCheckoutError] = useState('');
 
   const update = (d) => setData(prev => ({ ...prev, ...d }));
 
   const expiresDate = format(addMonths(new Date(), data.expires_months), 'yyyy-MM-dd');
 
-  const handleSubmit = async () => {
+  const handleCheckout = async () => {
     setSubmitting(true);
-    const code = generateVoucherCode();
-    setVoucherCode(code);
+    setCheckoutError('');
 
-    const voucherPayload = {
-      voucher_code: code,
-      type: data.type,
-      value: Number(data.value),
-      service_id: data.service_id || undefined,
-      service_name: data.service_name || undefined,
-      buyer_name: data.buyer_name,
-      buyer_email: data.buyer_email,
-      recipient_name: data.recipient_name,
-      dedication: data.dedication,
-      expires_at: expiresDate,
-      payment_status: 'pending',
-      status: 'active',
-    };
+    try {
+      const response = await base44.functions.invoke('createVoucherCheckout', {
+        voucherType: data.type,
+        voucherValue: Number(data.value),
+        serviceName: data.service_name || '',
+        recipientName: data.recipient_name,
+        buyerEmail: data.buyer_email,
+      });
 
-    await base44.entities.Voucher.create(voucherPayload);
+      if (response.data.error) {
+        setCheckoutError(response.data.error);
+        setSubmitting(false);
+        return;
+      }
+
+      const stripe = window.Stripe(response.data.publishableKey);
+      const result = await stripe.redirectToCheckout({ sessionId: response.data.sessionId });
+
+      if (result.error) {
+        setCheckoutError(result.error.message);
+      }
+    } catch (err) {
+      setCheckoutError('Błąd przy przygotowaniu płatności');
+      console.error(err);
+    }
 
     setSubmitting(false);
-    setDone(true);
   };
 
   const whatsappText = encodeURIComponent(
@@ -286,22 +294,7 @@ export default function VoucherBuilder({ services = [] }) {
                   </div>
                 )}
 
-                {/* Termin ważności */}
-                <div className="mb-8">
-                  <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">Ważność vouchera</label>
-                  <div className="flex gap-2 flex-wrap">
-                    {[3, 6, 12, 24].map(m => (
-                      <button
-                        key={m}
-                        onClick={() => update({ expires_months: m })}
-                        className={`px-4 py-2 border text-sm transition-all ${data.expires_months === m ? 'border-gold bg-gold text-obsidian' : 'border-border hover:border-gold'}`}
-                      >
-                        {m} {m === 1 ? 'miesiąc' : m < 5 ? 'miesiące' : 'miesięcy'}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="text-xs text-muted-foreground mt-2">Ważny do: {expiresDate}</div>
-                </div>
+                <div className="text-xs text-muted-foreground mb-8">Voucher ważny do: <span className="text-foreground font-medium">{expiresDate}</span></div>
 
                 <div className="flex gap-4">
                   <button onClick={() => setStep(0)} className="flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm tracking-widest uppercase">
@@ -359,12 +352,7 @@ export default function VoucherBuilder({ services = [] }) {
                       </div>
                     </div>
                   </div>
-                  {data.recipient_phone && (
-                    <div className="border border-border p-4 flex items-center gap-3 text-sm text-muted-foreground">
-                      <MessageCircle size={14} className="text-gold flex-shrink-0" />
-                      Po wygenerowaniu otrzymasz link do wysłania vouchera przez WhatsApp.
-                    </div>
-                  )}
+
                 </div>
                 <div className="flex gap-4">
                   <button onClick={() => setStep(1)} className="flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm tracking-widest uppercase">
@@ -385,27 +373,32 @@ export default function VoucherBuilder({ services = [] }) {
             {step === 3 && (
               <div>
                 <h2 className="font-display text-3xl text-foreground mb-2">Podsumowanie</h2>
-                <p className="text-muted-foreground mb-6">Sprawdź dane i wygeneruj voucher.</p>
+                <p className="text-muted-foreground mb-6">Sprawdź dane i przejdź do płatności.</p>
                 <div className="border border-border p-5 space-y-3 mb-8 text-sm">
                   <div className="flex justify-between"><span className="text-muted-foreground">Rodzaj</span><span>{data.type === 'value' ? `Kwota: ${data.value} PLN` : data.service_name}</span></div>
                   <div className="flex justify-between"><span className="text-muted-foreground">Dla</span><span>{data.recipient_name}</span></div>
                   {data.recipient_email && <div className="flex justify-between"><span className="text-muted-foreground">E-mail odbiorcy</span><span>{data.recipient_email}</span></div>}
                   {data.recipient_phone && <div className="flex justify-between"><span className="text-muted-foreground">WhatsApp odbiorcy</span><span>{data.recipient_phone}</span></div>}
-                  <div className="flex justify-between"><span className="text-muted-foreground">Ważność</span><span>do {expiresDate}</span></div>
+                  <div className="flex justify-between"><span className="text-muted-foreground">Ważny do</span><span>{expiresDate}</span></div>
                   <div className="flex justify-between"><span className="text-muted-foreground">Kupujący</span><span>{data.buyer_name}</span></div>
                   <div className="flex justify-between"><span className="text-muted-foreground">E-mail potwierdzenia</span><span>{data.buyer_email}</span></div>
                 </div>
+                {checkoutError && (
+                  <div className="border border-destructive bg-destructive/10 text-destructive p-4 mb-6 text-sm">
+                    {checkoutError}
+                  </div>
+                )}
                 <div className="flex gap-4">
                   <button onClick={() => setStep(2)} className="flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm tracking-widest uppercase">
                     <ChevronLeft size={16} /> Wróć
                   </button>
                   <button
-                    onClick={handleSubmit}
+                    onClick={handleCheckout}
                     disabled={submitting}
                     className="flex items-center gap-3 bg-gold text-obsidian px-10 py-4 text-sm tracking-widest uppercase font-medium hover:bg-gold-light transition-all duration-300 disabled:opacity-50"
                   >
                     {submitting ? <Loader2 size={16} className="animate-spin" /> : <Check size={16} />}
-                    {submitting ? 'Generuję...' : 'Wygeneruj voucher'}
+                    {submitting ? 'Przygotowuję...' : 'Kup teraz'}
                   </button>
                 </div>
               </div>
