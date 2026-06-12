@@ -1,0 +1,28 @@
+{
+  "name": "BlockedSlot",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "time_from": {
+      "type": "string",
+      "description": "Godzina od np. 10:00"
+    },
+    "time_to": {
+      "type": "string",
+      "description": "Godzina do np. 12:00"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "is_full_day": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "date"
+  ]
+}

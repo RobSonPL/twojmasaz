@@ -1,0 +1,82 @@
+{
+  "name": "Booking",
+  "type": "object",
+  "properties": {
+    "client_name": {
+      "type": "string"
+    },
+    "client_email": {
+      "type": "string"
+    },
+    "client_phone": {
+      "type": "string"
+    },
+    "service_id": {
+      "type": "string",
+      "description": "ID us\u0142ugi"
+    },
+    "service_name": {
+      "type": "string",
+      "description": "Nazwa us\u0142ugi (kopia)"
+    },
+    "service_price": {
+      "type": "number"
+    },
+    "service_duration": {
+      "type": "number"
+    },
+    "booking_type": {
+      "type": "string",
+      "enum": [
+        "home",
+        "studio"
+      ],
+      "description": "Typ: dojazd lub salon"
+    },
+    "address": {
+      "type": "string",
+      "description": "Adres przy doje\u017adzie"
+    },
+    "booking_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "booking_time": {
+      "type": "string",
+      "description": "Godzina np. 14:00"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "confirmed",
+        "cancelled",
+        "completed"
+      ],
+      "default": "confirmed"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "confirmation_sent": {
+      "type": "boolean",
+      "default": false
+    },
+    "reminder_sent": {
+      "type": "boolean",
+      "default": false
+    },
+    "google_calendar_event_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "client_name",
+    "client_email",
+    "client_phone",
+    "service_id",
+    "booking_date",
+    "booking_time",
+    "booking_type"
+  ]
+}

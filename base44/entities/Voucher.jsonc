@@ -1,0 +1,74 @@
+{
+  "name": "Voucher",
+  "type": "object",
+  "properties": {
+    "voucher_code": {
+      "type": "string",
+      "description": "Unikalny kod vouchera"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "service",
+        "value"
+      ],
+      "description": "Na us\u0142ug\u0119 lub na kwot\u0119"
+    },
+    "service_id": {
+      "type": "string",
+      "description": "ID us\u0142ugi (je\u015bli type=service)"
+    },
+    "service_name": {
+      "type": "string"
+    },
+    "value": {
+      "type": "number",
+      "description": "Warto\u015b\u0107 w PLN"
+    },
+    "buyer_name": {
+      "type": "string"
+    },
+    "buyer_email": {
+      "type": "string"
+    },
+    "recipient_name": {
+      "type": "string",
+      "description": "Imi\u0119 obdarowanego"
+    },
+    "dedication": {
+      "type": "string",
+      "description": "Dedykacja"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "used",
+        "expired"
+      ],
+      "default": "active"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "used_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "paid"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "buyer_name",
+    "buyer_email",
+    "value",
+    "type"
+  ]
+}
