@@ -11,7 +11,7 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Home from '@/pages/Home';
 import MyVisits from '@/pages/MyVisits';
 import BookingPage from '@/pages/BookingPage';
-import VouchersPage from '@/pages/VouchersPage';
+import VouchersPage from '@/pages/VouchersPage.jsx';
 import AdminDashboard from '@/pages/admin/AdminDashboard';
 import AdminMessages from '@/pages/admin/AdminMessages';
 import AdminServices from '@/pages/admin/AdminServices';

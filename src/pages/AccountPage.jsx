@@ -5,6 +5,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import { Link } from 'react-router-dom';
 import { Gift, Calendar, Tag, User, LogOut, ChevronRight, Star } from 'lucide-react';
 import { useAuth } from '@/lib/AuthContext';
+import LoyaltyTiers from '@/components/account/LoyaltyTiers';
 
 const LOYALTY_GOAL = 5;
 
@@ -80,6 +81,7 @@ export default function AccountPage() {
 
   const completedBookings = bookings.filter(b => b.status === 'completed');
   const completedCount = completedBookings.length;
+  const totalSpend = completedBookings.reduce((sum, b) => sum + (b.service_price || 0), 0);
   const cyclePosition = completedCount % LOYALTY_GOAL;
   const cyclesCompleted = Math.floor(completedCount / LOYALTY_GOAL);
   const visitsToFree = cyclePosition === 0 && completedCount > 0 ? 0 : LOYALTY_GOAL - cyclePosition;
@@ -341,16 +343,23 @@ export default function AccountPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-3 gap-4 mb-8">
                     <div className="border border-border p-5 text-center">
                       <div className="font-mono text-3xl text-gold mb-1">{completedCount}</div>
                       <div className="text-xs text-muted-foreground tracking-widest uppercase">Wizyt łącznie</div>
                     </div>
                     <div className="border border-border p-5 text-center">
+                      <div className="font-mono text-2xl text-gold mb-1">{totalSpend} zł</div>
+                      <div className="text-xs text-muted-foreground tracking-widest uppercase">Łączna wartość</div>
+                    </div>
+                    <div className="border border-border p-5 text-center">
                       <div className="font-mono text-3xl text-gold mb-1">{cyclesCompleted}</div>
-                      <div className="text-xs text-muted-foreground tracking-widest uppercase">Zdobyte darmowe</div>
+                      <div className="text-xs text-muted-foreground tracking-widest uppercase">Darmowe wizyty</div>
                     </div>
                   </div>
+
+                  {/* Progi lojalnościowe */}
+                  <LoyaltyTiers completedCount={completedCount} totalSpend={totalSpend} />
                 </motion.div>
               )}
 
