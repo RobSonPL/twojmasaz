@@ -21,7 +21,7 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section id="jak-to-dziala" className="section-padding bg-obsidian overflow-hidden">
+    <section id="jak-to-dziala" className="section-padding bg-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
@@ -39,7 +39,7 @@ export default function HowItWorksSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="font-display text-4xl lg:text-6xl mt-4 text-bone"
+              className="font-display text-4xl lg:text-6xl mt-4 text-primary-foreground"
             >
               Jak to<br />działa
             </motion.h2>
@@ -51,7 +51,7 @@ export default function HowItWorksSection() {
             transition={{ delay: 0.3 }}
             className="flex items-end"
           >
-            <p className="text-bone/40 text-lg max-w-md">
+            <p className="text-primary-foreground/40 text-lg max-w-md">
               Trzy kroki dzielą Cię od chwili prawdziwego odprężenia. Bez telefonów, bez oczekiwania.
             </p>
           </motion.div>
@@ -74,10 +74,10 @@ export default function HowItWorksSection() {
               <div className="font-mono text-xs text-gold tracking-widest mb-6">
                 {step.number}
               </div>
-              <h3 className="font-display text-2xl text-bone mb-4">
+              <h3 className="font-display text-2xl text-primary-foreground mb-4">
                 {step.title}
               </h3>
-              <p className="text-bone/40 text-base leading-relaxed">
+              <p className="text-primary-foreground/40 text-base leading-relaxed">
                 {step.description}
               </p>
 
@@ -103,7 +103,7 @@ export default function HowItWorksSection() {
           >
             Zarezerwuj teraz
           </Link>
-          <span className="text-bone/30 text-sm">Bez karty kredytowej · Bez rejestracji · 60 sekund</span>
+          <span className="text-primary-foreground/30 text-sm">Bez karty kredytowej · Bez rejestracji · 60 sekund</span>
         </motion.div>
       </div>
     </section>

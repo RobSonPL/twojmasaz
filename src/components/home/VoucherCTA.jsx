@@ -4,7 +4,7 @@ import { Gift, ArrowUpRight } from 'lucide-react';
 
 export default function VoucherCTA() {
   return (
-    <section className="section-padding bg-bone">
+    <section className="section-padding bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Image side */}
@@ -43,7 +43,7 @@ export default function VoucherCTA() {
               <span className="text-gold text-xs tracking-[0.4em] uppercase">Prezenty</span>
             </div>
 
-            <h2 className="font-display text-4xl lg:text-5xl text-obsidian mb-6 leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-6 leading-tight">
               Podaruj chwilę<br />
               <em className="text-gold">prawdziwego</em><br />
               relaksu
@@ -69,7 +69,7 @@ export default function VoucherCTA() {
 
             <Link
               to="/vouchery"
-              className="group inline-flex items-center gap-3 bg-obsidian text-bone px-8 py-4 text-sm tracking-widest uppercase hover:bg-gold hover:text-obsidian transition-all duration-300 focus-gold"
+              className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 text-sm tracking-widest uppercase hover:bg-gold hover:text-obsidian transition-all duration-300 focus-gold"
             >
               Kup voucher prezentowy
               <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

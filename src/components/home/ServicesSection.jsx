@@ -149,7 +149,7 @@ export default function ServicesSection({ services }) {
   const displayServices = services?.length > 0 ? services : defaultServices;
 
   return (
-    <section id="uslugi" className="section-padding bg-bone">
+    <section id="uslugi" className="section-padding bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
@@ -167,7 +167,7 @@ export default function ServicesSection({ services }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="font-display text-4xl lg:text-6xl mt-4 text-obsidian"
+              className="font-display text-4xl lg:text-6xl mt-4 text-foreground"
             >
               Nasze<br />masaże
             </motion.h2>
@@ -201,7 +201,7 @@ export default function ServicesSection({ services }) {
         >
           <Link
             to="/rezerwacja"
-            className="bg-obsidian text-bone px-8 py-4 text-sm tracking-widest uppercase hover:bg-gold hover:text-obsidian transition-all duration-300 focus-gold"
+            className="bg-foreground text-background px-8 py-4 text-sm tracking-widest uppercase hover:bg-gold hover:text-obsidian transition-all duration-300 focus-gold"
           >
             Zarezerwuj wizytę online
           </Link>

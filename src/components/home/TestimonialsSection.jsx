@@ -24,7 +24,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="section-padding bg-obsidian">
+    <section className="section-padding bg-primary">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="mb-20">
@@ -41,7 +41,7 @@ export default function TestimonialsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="font-display text-4xl lg:text-6xl mt-4 text-bone"
+            className="font-display text-4xl lg:text-6xl mt-4 text-primary-foreground"
           >
             Co mówią<br />klienci
           </motion.h2>
@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="border border-white/5 p-8 hover:border-gold/20 transition-all duration-500 group"
+              className="border border-primary-foreground/10 p-8 hover:border-gold/20 transition-all duration-500 group"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-6">
@@ -66,15 +66,15 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Quote */}
-              <p className="text-bone/60 text-base leading-relaxed mb-8 italic font-display">
+              <p className="text-primary-foreground/60 text-base leading-relaxed mb-8 italic font-display">
                 „{t.text}"
               </p>
 
               {/* Author */}
-              <div className="border-t border-white/5 pt-6 flex justify-between items-end">
+              <div className="border-t border-primary-foreground/10 pt-6 flex justify-between items-end">
                 <div>
-                  <div className="text-bone text-sm font-medium">{t.name}</div>
-                  <div className="text-bone/30 text-xs tracking-wider mt-1">{t.service}</div>
+                  <div className="text-primary-foreground text-sm font-medium">{t.name}</div>
+                  <div className="text-primary-foreground/30 text-xs tracking-wider mt-1">{t.service}</div>
                 </div>
                 <div className="font-mono text-xs text-gold/40 group-hover:text-gold/70 transition-colors">★ {t.rating}.0</div>
               </div>
@@ -88,18 +88,18 @@ export default function TestimonialsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-16 p-8 border border-white/5 flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mt-16 p-8 border border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="text-center md:text-left">
-            <div className="font-mono text-5xl text-bone">4.9</div>
-            <div className="text-bone/30 text-xs tracking-widest uppercase mt-2">Średnia ze wszystkich opinii</div>
+            <div className="font-mono text-5xl text-primary-foreground">4.9</div>
+            <div className="text-primary-foreground/30 text-xs tracking-widest uppercase mt-2">Średnia ze wszystkich opinii</div>
           </div>
           <div className="flex gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} size={20} className="text-gold fill-gold" />
             ))}
           </div>
-          <div className="text-bone/30 text-sm text-center md:text-right max-w-xs">
+          <div className="text-primary-foreground/30 text-sm text-center md:text-right max-w-xs">
             Ponad 500 zadowolonych klientów. Dołącz do nich — zarezerwuj swoją wizytę już dziś.
           </div>
         </motion.div>

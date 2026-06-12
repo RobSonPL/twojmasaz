@@ -17,7 +17,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="kontakt" className="section-padding bg-bone">
+    <section id="kontakt" className="section-padding bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Left: Info */}
@@ -27,7 +27,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
           >
             <span className="text-gold text-xs tracking-[0.4em] uppercase">Kontakt</span>
-            <h2 className="font-display text-4xl lg:text-5xl mt-4 text-obsidian mb-8">
+            <h2 className="font-display text-4xl lg:text-5xl mt-4 text-foreground mb-8">
               Masz pytania?<br />Napisz do nas
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-12 max-w-md">
@@ -41,7 +41,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-xs text-muted-foreground tracking-widest uppercase mb-1">Telefon / WhatsApp</div>
-                  <a href="tel:+48000000000" className="text-obsidian hover:text-gold transition-colors font-medium">
+                  <a href="tel:+48000000000" className="text-foreground hover:text-gold transition-colors font-medium">
                     +48 000 000 000
                   </a>
                 </div>
@@ -52,7 +52,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-xs text-muted-foreground tracking-widest uppercase mb-1">E-mail</div>
-                  <a href="mailto:kontakt@twojmasaz.life" className="text-obsidian hover:text-gold transition-colors font-medium">
+                  <a href="mailto:kontakt@twojmasaz.life" className="text-foreground hover:text-gold transition-colors font-medium">
                     kontakt@twojmasaz.life
                   </a>
                 </div>
@@ -63,7 +63,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="text-xs text-muted-foreground tracking-widest uppercase mb-1">Lokalizacja</div>
-                  <span className="text-obsidian font-medium">Dojazd do klienta + Salon stacjonarny</span>
+                  <span className="text-foreground font-medium">Dojazd do klienta + Salon stacjonarny</span>
                 </div>
               </li>
             </ul>
@@ -81,7 +81,7 @@ export default function ContactSection() {
                 <div className="w-16 h-16 border border-gold flex items-center justify-center mb-6">
                   <Check size={24} className="text-gold" />
                 </div>
-                <h3 className="font-display text-2xl text-obsidian mb-3">Wiadomość wysłana</h3>
+                <h3 className="font-display text-2xl text-foreground mb-3">Wiadomość wysłana</h3>
                 <p className="text-muted-foreground">Odpiszemy najszybciej jak to możliwe, zwykle w ciągu kilku godzin.</p>
               </div>
             ) : (
@@ -96,7 +96,7 @@ export default function ContactSection() {
                       required
                       value={form.name}
                       onChange={e => setForm({ ...form, name: e.target.value })}
-                      className="w-full border-b border-border bg-transparent py-3 text-obsidian placeholder-muted-foreground focus:outline-none focus:border-gold transition-colors text-base"
+                      className="w-full border-b border-border bg-transparent py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:border-gold transition-colors text-base"
                       placeholder="Jan Kowalski"
                     />
                   </div>
@@ -108,7 +108,7 @@ export default function ContactSection() {
                       type="tel"
                       value={form.phone}
                       onChange={e => setForm({ ...form, phone: e.target.value })}
-                      className="w-full border-b border-border bg-transparent py-3 text-obsidian placeholder-muted-foreground focus:outline-none focus:border-gold transition-colors text-base"
+                      className="w-full border-b border-border bg-transparent py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:border-gold transition-colors text-base"
                       placeholder="+48 000 000 000"
                     />
                   </div>
@@ -122,7 +122,7 @@ export default function ContactSection() {
                     required
                     value={form.email}
                     onChange={e => setForm({ ...form, email: e.target.value })}
-                    className="w-full border-b border-border bg-transparent py-3 text-obsidian placeholder-muted-foreground focus:outline-none focus:border-gold transition-colors text-base"
+                    className="w-full border-b border-border bg-transparent py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:border-gold transition-colors text-base"
                     placeholder="jan@example.com"
                   />
                 </div>
@@ -135,14 +135,14 @@ export default function ContactSection() {
                     rows={5}
                     value={form.message}
                     onChange={e => setForm({ ...form, message: e.target.value })}
-                    className="w-full border-b border-border bg-transparent py-3 text-obsidian placeholder-muted-foreground focus:outline-none focus:border-gold transition-colors text-base resize-none"
+                    className="w-full border-b border-border bg-transparent py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:border-gold transition-colors text-base resize-none"
                     placeholder="W czym możemy Ci pomóc?"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex items-center gap-3 bg-obsidian text-bone px-8 py-4 text-sm tracking-widest uppercase hover:bg-gold hover:text-obsidian transition-all duration-300 focus-gold disabled:opacity-50 min-h-[48px]"
+                  className="flex items-center gap-3 bg-foreground text-background px-8 py-4 text-sm tracking-widest uppercase hover:bg-gold hover:text-obsidian transition-all duration-300 focus-gold disabled:opacity-50 min-h-[48px]"
                 >
                   {submitting ? 'Wysyłanie...' : 'Wyślij wiadomość'}
                   <Send size={14} />
