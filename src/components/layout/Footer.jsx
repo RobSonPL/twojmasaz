@@ -51,7 +51,6 @@ export default function Footer() {
                 { label: 'Jak to działa', href: '/#jak-to-dziala' },
                 { label: 'Vouchery prezentowe', href: '/vouchery' },
                 { label: 'Zarezerwuj wizytę', href: '/rezerwacja' },
-                { label: 'Kontakt', href: '/#kontakt' },
               ].map((link) => (
                 <li key={link.href}>
                   <a
