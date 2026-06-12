@@ -7,6 +7,8 @@ import { useTheme } from '@/lib/ThemeContext';
 const NAV_LINKS = [
   { href: '/#uslugi', label: 'Usługi' },
   { href: '/#jak-to-dziala', label: 'Jak to działa' },
+  { href: '/#galeria', label: 'Galeria' },
+  { href: '/#opinie', label: 'Opinie' },
   { href: '/vouchery', label: 'Vouchery' },
   { href: '/#kontakt', label: 'Kontakt' },
 ];

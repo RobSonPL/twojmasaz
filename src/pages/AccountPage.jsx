@@ -258,31 +258,22 @@ export default function AccountPage() {
               {/* LOYALTY */}
               {activeTab === 'loyalty' && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  {/* Big counter */}
-                  <div className={`p-10 border-2 text-center mb-8 ${visitsToFree === 0 ? 'border-gold bg-gold/5' : 'border-border'}`}>
-                    {visitsToFree === 0 ? (
-                      <>
-                        <div className="text-6xl mb-4">🎁</div>
-                        <div className="font-display text-3xl text-gold mb-2">Darmowy masaż czeka!</div>
-                        <p className="text-muted-foreground mb-6">Masz prawo do bezpłatnej wizyty. Skontaktuj się z nami.</p>
-                        <a
-                          href="https://wa.me/48884060680?text=Cześć!%20Mam%20darmową%20wizytę%20z%20programu%20lojalnościowego."
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-8 py-4 text-sm tracking-widest uppercase text-white"
-                          style={{ backgroundColor: '#25D366' }}
-                        >
-                          Zarezerwuj przez WhatsApp
-                        </a>
-                      </>
-                    ) : (
-                      <>
-                        <div className="text-xs text-muted-foreground tracking-[0.3em] uppercase mb-4">Do darmowego masażu</div>
-                        <div className="font-mono text-8xl font-medium text-gold leading-none mb-3">{visitsToFree}</div>
-                        <div className="text-muted-foreground">{visitsToFree === 1 ? 'jeszcze jedna wizyta' : `jeszcze ${visitsToFree} wizyty`}</div>
-                      </>
-                    )}
-                  </div>
+                  {visitsToFree === 0 && (
+                    <div className="border-2 border-gold bg-gold/5 p-6 text-center mb-8">
+                      <div className="text-4xl mb-2">🎁</div>
+                      <div className="font-display text-2xl text-gold mb-2">Darmowy masaż czeka!</div>
+                      <p className="text-muted-foreground text-sm mb-4">Masz prawo do bezpłatnej wizyty.</p>
+                      <a
+                        href="https://wa.me/48884060680?text=Cześć!%20Mam%20darmową%20wizytę%20z%20programu%20lojalnościowego."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-8 py-4 text-sm tracking-widest uppercase text-white"
+                        style={{ backgroundColor: '#25D366' }}
+                      >
+                        Zarezerwuj przez WhatsApp
+                      </a>
+                    </div>
+                  )}
 
                   {/* Stamp card */}
                   <div className="border border-border p-6 mb-8">
