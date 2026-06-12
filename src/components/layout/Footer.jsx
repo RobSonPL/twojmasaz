@@ -3,7 +3,7 @@ import { Instagram, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-obsidian text-bone/60">
+    <footer className="bg-primary text-primary-foreground/60">
       <div className="luminous-rule" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
@@ -13,11 +13,11 @@ export default function Footer() {
               <div className="w-8 h-8 border border-gold flex items-center justify-center">
                 <span className="font-display text-xs font-semibold text-gold tracking-widest">WM</span>
               </div>
-              <span className="font-display text-sm tracking-[0.2em] uppercase text-bone font-medium">
+              <span className="font-display text-sm tracking-[0.2em] uppercase text-primary-foreground font-medium">
                 Wesoły Masaż
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-bone/50 max-w-xs">
+            <p className="text-sm leading-relaxed text-primary-foreground/50 max-w-xs">
               Profesjonalne masaże z dojazdem do klienta i w salonie. Twój komfort jest naszym priorytetem.
             </p>
             <div className="flex gap-4 mt-8">
@@ -44,7 +44,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-bone text-xs tracking-[0.2em] uppercase mb-6">Nawigacja</h4>
+            <h4 className="text-primary-foreground text-xs tracking-[0.2em] uppercase mb-6">Nawigacja</h4>
             <ul className="space-y-3">
               {[
                 { label: 'Usługi', href: '/#uslugi' },
@@ -56,7 +56,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-bone/50 hover:text-gold transition-colors duration-300"
+                    className="text-sm text-primary-foreground/50 hover:text-gold transition-colors duration-300"
                   >
                     {link.label}
                   </a>
@@ -67,23 +67,23 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-bone text-xs tracking-[0.2em] uppercase mb-6">Kontakt</h4>
+            <h4 className="text-primary-foreground text-xs tracking-[0.2em] uppercase mb-6">Kontakt</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={14} className="text-gold mt-1 flex-shrink-0" />
-                <a href="tel:+48000000000" className="text-sm text-bone/50 hover:text-bone transition-colors">
+                <a href="tel:+48000000000" className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors">
                   +48 000 000 000
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={14} className="text-gold mt-1 flex-shrink-0" />
-                <a href="mailto:kontakt@twojmasaz.life" className="text-sm text-bone/50 hover:text-bone transition-colors">
+                <a href="mailto:kontakt@twojmasaz.life" className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors">
                   kontakt@twojmasaz.life
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-gold mt-1 flex-shrink-0" />
-                <span className="text-sm text-bone/50">
+                <span className="text-sm text-primary-foreground/50">
                   Dojazd do klienta<br />
                   + Salon stacjonarny
                 </span>
@@ -93,7 +93,7 @@ export default function Footer() {
         </div>
 
         <div className="luminous-rule mt-16 mb-8" />
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-bone/30 tracking-wider">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/30 tracking-wider">
           <p>© {new Date().getFullYear()} Wesoły Masaż. Wszelkie prawa zastrzeżone.</p>
           <p>Projekt z troską o Twój relaks</p>
         </div>

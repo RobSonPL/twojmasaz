@@ -42,7 +42,7 @@ function PhotoCard({ photo, index, onClick }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ delay: index * 0.08, duration: 0.55 }}
-      className="cursor-pointer group relative overflow-hidden bg-gray-100"
+      className="cursor-pointer group relative overflow-hidden bg-muted"
       style={{ height: photo.tall ? '400px' : '260px' }}
       onClick={onClick}
     >
@@ -69,7 +69,7 @@ export default function GallerySection() {
   const col3 = photos.filter((_, i) => i % 3 === 2);
 
   return (
-    <section id="galeria" className="py-32 bg-white">
+    <section id="galeria" className="py-32 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
@@ -87,7 +87,7 @@ export default function GallerySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="font-display text-4xl lg:text-6xl mt-4 text-obsidian"
+              className="font-display text-4xl lg:text-6xl mt-4 text-foreground"
             >
               Nasze<br />studio
             </motion.h2>
@@ -99,7 +99,7 @@ export default function GallerySection() {
             transition={{ delay: 0.3 }}
             className="lg:col-span-7 lg:flex lg:items-end lg:pb-4"
           >
-            <p className="text-gray-500 text-lg max-w-lg">
+            <p className="text-muted-foreground text-lg max-w-lg">
               Przestrzeń zaprojektowana z myślą o pełnym wyciszeniu — ciepłe światło, naturalne aromaty i cisza, która pozwala naprawdę odpocząć.
             </p>
           </motion.div>
