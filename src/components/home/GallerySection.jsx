@@ -107,7 +107,7 @@ export default function GallerySection() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 auto-rows-[220px] gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3" style={{ gridAutoRows: '220px' }}>
           {photos.map((photo, i) => (
             <PhotoCard key={i} photo={photo} index={i} onClick={() => setLightbox(photo)} />
           ))}

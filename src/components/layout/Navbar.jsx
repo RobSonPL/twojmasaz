@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 import { useTheme } from '@/lib/ThemeContext';
 
@@ -62,6 +62,13 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
           <Link
+            to="/konto"
+            className="hidden md:inline-flex items-center justify-center w-8 h-8 border border-border text-muted-foreground hover:text-gold hover:border-gold transition-colors"
+            title="Moje konto"
+          >
+            <User size={14} />
+          </Link>
+          <Link
             to="/rezerwacja"
             className="hidden md:inline-flex items-center gap-2 bg-gold text-obsidian px-5 py-2 text-xs tracking-widest uppercase font-medium hover:bg-gold-light transition-colors duration-300"
           >
@@ -91,6 +98,13 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <Link
+            to="/konto"
+            className="text-sm text-muted-foreground hover:text-gold transition-colors tracking-widest uppercase"
+            onClick={() => setMenuOpen(false)}
+          >
+            Moje konto
+          </Link>
           <Link
             to="/rezerwacja"
             className="inline-flex items-center justify-center bg-gold text-obsidian px-5 py-3 text-xs tracking-widest uppercase font-medium hover:bg-gold-light transition-colors"

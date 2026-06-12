@@ -14,7 +14,7 @@ const perks = [
   'Dotyczy wszystkich rodzajów masażu',
   'Wizyty można łączyć — dojazd i salon',
   'Punkty nie wygasają',
-  'Bez rejestracji — rozpoznam Cię po imieniu',
+  'Sprawdź postęp w Twoim koncie klienta',
 ];
 
 export default function LoyaltySection() {
@@ -50,8 +50,7 @@ export default function LoyaltySection() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="h-px mt-8 mb-8 origin-left bg-gold"
-              style={{ width: '5rem' }}
+              className="h-px mt-8 mb-8 origin-left bg-gold w-20"
             />
 
             <motion.p
@@ -61,7 +60,7 @@ export default function LoyaltySection() {
               transition={{ delay: 0.3 }}
               className="text-lg leading-relaxed mb-8 text-primary-foreground/60"
             >
-              Regularne masaże to najlepsza inwestycja w zdrowie. Dlatego nagradzam lojalność — po każdych pięciu wizytach otrzymujesz szósty masaż całkowicie bezpłatnie. Bez kart, bez aplikacji — wystarczy Twoje imię.
+              Regularne masaże to najlepsza inwestycja w zdrowie. Dlatego nagradzam lojalność — po każdych pięciu wizytach otrzymujesz szósty masaż całkowicie bezpłatnie.
             </motion.p>
 
             <motion.ul
@@ -84,12 +83,19 @@ export default function LoyaltySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.55 }}
+              className="flex flex-wrap gap-4"
             >
               <Link
-                to="/rezerwacja"
+                to="/konto"
                 className="gold-outline-btn inline-flex items-center gap-3 px-10 py-4 text-sm tracking-widest uppercase font-medium"
               >
-                Zacznij zbierać punkty
+                Moje konto
+              </Link>
+              <Link
+                to="/rezerwacja"
+                className="inline-flex items-center gap-3 px-10 py-4 text-sm tracking-widest uppercase font-medium text-primary-foreground/40 hover:text-gold transition-colors"
+              >
+                Zarezerwuj →
               </Link>
             </motion.div>
           </div>
@@ -102,10 +108,7 @@ export default function LoyaltySection() {
             transition={{ delay: 0.3, duration: 0.7 }}
             className="relative pt-6 pr-6"
           >
-            <div
-              className="relative p-8 lg:p-10"
-              className="border border-primary-foreground/10 bg-primary-foreground/[0.03]"
-            >
+            <div className="relative p-8 lg:p-10 border border-primary-foreground/10 bg-primary-foreground/[0.03]">
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-gold" />
               <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-gold" />
@@ -124,12 +127,10 @@ export default function LoyaltySection() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 + i * 0.08 }}
-                    className="flex flex-col items-center gap-2 p-3"
-                    className={step.gift ? 'border border-gold bg-gold/10' : 'border border-primary-foreground/10'}
+                    className={`flex flex-col items-center gap-2 p-3 ${step.gift ? 'border border-gold bg-gold/10' : 'border border-primary-foreground/10'}`}
                   >
                     <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center"
-                      className={step.gift ? 'border border-gold bg-gold text-obsidian font-bold' : 'border border-primary-foreground/20 text-primary-foreground/30'}
+                      className={`w-10 h-10 rounded-full flex items-center justify-center ${step.gift ? 'border border-gold bg-gold text-obsidian font-bold' : 'border border-primary-foreground/20 text-primary-foreground/30'}`}
                     >
                       {step.gift ? (
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -143,10 +144,7 @@ export default function LoyaltySection() {
                         <span className="font-mono text-xs">{step.num}</span>
                       )}
                     </div>
-                    <span
-                      className="text-xs tracking-wider"
-                    className={step.gift ? 'text-gold font-medium' : 'text-primary-foreground/30'}
-                    >
+                    <span className={`text-xs tracking-wider ${step.gift ? 'text-gold font-medium' : 'text-primary-foreground/30'}`}>
                       {step.label}
                     </span>
                   </motion.div>
@@ -165,8 +163,7 @@ export default function LoyaltySection() {
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
-              className="absolute -top-2 -right-2 w-20 h-20 rounded-full flex flex-col items-center justify-center"
-              className="bg-gold"
+              className="absolute -top-2 -right-2 w-20 h-20 rounded-full bg-gold flex flex-col items-center justify-center"
               style={{ boxShadow: '0 8px 30px rgba(201,169,110,0.4)' }}
             >
               <span className="font-display text-obsidian text-2xl font-bold leading-none">6</span>
