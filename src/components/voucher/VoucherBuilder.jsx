@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { base44 } from '@/api/base44Client';
-import { Gift, Check, Loader2, ChevronLeft, Send, MessageCircle, Mail } from 'lucide-react';
+import { Gift, Check, Loader2, ChevronLeft, MessageCircle } from 'lucide-react';
 import { addMonths, format } from 'date-fns';
 
 function generateVoucherCode() {
@@ -103,26 +103,6 @@ export default function VoucherBuilder({ services = [] }) {
 
     await base44.entities.Voucher.create(voucherPayload);
 
-    const voucherBody = `Voucher prezentowy Wesoły Masaż\n\nKod: ${code}\n${data.type === 'service' ? `Usługa: ${data.service_name}` : `Wartość: ${data.value} PLN`}\nDla: ${data.recipient_name}\nWażny do: ${expiresDate}\n${data.dedication ? `\nDedykacja: „${data.dedication}"\n` : ''}\nVoucher można wykorzystać przy rezerwacji online lub telefonicznie.\n\nWesoły Masaż · wesoly-masaz.pl`;
-
-    // Email do kupującego
-    if (data.send_email && data.buyer_email) {
-      await base44.integrations.Core.SendEmail({
-        to: data.buyer_email,
-        subject: `Voucher prezentowy Wesoły Masaż — ${code}`,
-        body: `Cześć ${data.buyer_name}!\n\n${voucherBody}`,
-      });
-    }
-
-    // Email do obdarowanego
-    if (data.send_email && data.recipient_email && data.recipient_email !== data.buyer_email) {
-      await base44.integrations.Core.SendEmail({
-        to: data.recipient_email,
-        subject: `Masz voucher prezentowy Wesoły Masaż! 🎁`,
-        body: `Cześć ${data.recipient_name}!\n\nKtoś pomyślał o Tobie i podarował Ci wyjątkowy prezent.\n\n${voucherBody}`,
-      });
-    }
-
     setSubmitting(false);
     setDone(true);
   };
@@ -140,7 +120,7 @@ export default function VoucherBuilder({ services = [] }) {
         </div>
         <h2 className="font-display text-3xl text-foreground mb-4">Voucher gotowy!</h2>
         <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-          {data.send_email && `Szczegóły wysłano na ${data.buyer_email}.`}
+          Voucher został zapisany. Wyślij go odbiorcy przez WhatsApp lub zapisz kod poniżej.
         </p>
         <div className="border border-gold/20 bg-gold/5 p-6 max-w-xs mx-auto mb-8">
           <div className="text-xs text-muted-foreground tracking-widest uppercase mb-3">Kod vouchera</div>
@@ -379,26 +359,12 @@ export default function VoucherBuilder({ services = [] }) {
                       </div>
                     </div>
                   </div>
-                  {/* Opcje wysyłki */}
-                  <div className="border border-border p-4 space-y-3">
-                    <div className="text-xs tracking-widest uppercase text-muted-foreground mb-2">Opcje wysyłki</div>
-                    <label className="flex items-center gap-3 cursor-pointer">
-                      <input type="checkbox" checked={data.send_email} onChange={e => update({ send_email: e.target.checked })} className="accent-gold w-4 h-4" />
-                      <div className="flex items-center gap-2">
-                        <Mail size={14} className="text-muted-foreground" />
-                        <span className="text-sm">Wyślij voucher e-mailem</span>
-                      </div>
-                    </label>
-                    {data.recipient_phone && (
-                      <label className="flex items-center gap-3 cursor-pointer">
-                        <input type="checkbox" checked={data.send_whatsapp} onChange={e => update({ send_whatsapp: e.target.checked })} className="accent-gold w-4 h-4" />
-                        <div className="flex items-center gap-2">
-                          <MessageCircle size={14} className="text-muted-foreground" />
-                          <span className="text-sm">Pokaż link WhatsApp po wygenerowaniu</span>
-                        </div>
-                      </label>
-                    )}
-                  </div>
+                  {data.recipient_phone && (
+                    <div className="border border-border p-4 flex items-center gap-3 text-sm text-muted-foreground">
+                      <MessageCircle size={14} className="text-gold flex-shrink-0" />
+                      Po wygenerowaniu otrzymasz link do wysłania vouchera przez WhatsApp.
+                    </div>
+                  )}
                 </div>
                 <div className="flex gap-4">
                   <button onClick={() => setStep(1)} className="flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm tracking-widest uppercase">
