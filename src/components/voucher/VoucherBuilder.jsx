@@ -92,7 +92,10 @@ export default function VoucherBuilder({ services = [] }) {
         voucherValue: Number(data.value),
         serviceName: data.service_name || '',
         recipientName: data.recipient_name,
+        recipientEmail: data.recipient_email || '',
+        buyerName: data.buyer_name,
         buyerEmail: data.buyer_email,
+        dedication: data.dedication || '',
       });
 
       if (response.data.error) {

@@ -5,7 +5,7 @@ Deno.serve(async (req) => {
     const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY'));
     const body = await req.json();
 
-    const { voucherType, voucherValue, serviceName, recipientName, buyerEmail } = body;
+    const { voucherType, voucherValue, serviceName, recipientName, buyerEmail, recipientEmail, buyerName, dedication } = body;
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -28,9 +28,13 @@ Deno.serve(async (req) => {
       metadata: {
         base44_app_id: Deno.env.get('BASE44_APP_ID'),
         voucherType,
+        voucherValue: voucherValue.toString(),
         serviceName: serviceName || '',
         recipientName,
+        recipientEmail: recipientEmail || '',
+        buyerName,
         buyerEmail,
+        dedication: dedication || '',
       },
     });
 
