@@ -30,11 +30,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || !isHomePage
-          ? 'bg-background border-b border-border shadow-sm'
-          : 'bg-transparent border-b border-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-background border-b border-border shadow-sm"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
         {/* Logo */}
@@ -43,9 +39,7 @@ export default function Navbar() {
             <span className="font-display text-xs font-semibold text-gold tracking-widest">WM</span>
           </div>
           <span
-            className={`font-display text-sm tracking-[0.2em] uppercase font-medium transition-colors ${
-              scrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'
-            }`}
+            className="font-display text-sm tracking-[0.2em] uppercase font-medium transition-colors text-foreground"
           >
             Wesoły Masaż
           </span>
@@ -57,9 +51,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className={`text-xs tracking-[0.15em] uppercase transition-colors duration-200 hover:text-gold ${
-                scrolled || !isHomePage ? 'text-muted-foreground' : 'text-primary-foreground/70'
-              }`}
+              className="text-xs tracking-[0.15em] uppercase transition-colors duration-200 text-muted-foreground hover:text-gold"
             >
               {link.label}
             </a>
@@ -78,9 +70,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`md:hidden transition-colors ${
-              scrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'
-            }`}
+            className="md:hidden transition-colors text-foreground"
             aria-label="Menu"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}

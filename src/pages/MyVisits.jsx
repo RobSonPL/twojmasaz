@@ -84,77 +84,89 @@ export default function MyVisits() {
                 </div>
               ) : (
                 <>
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 mb-10">
-                    <div className="border border-border p-5 text-center">
-                      <div className="font-mono text-3xl font-medium text-gold">{completedCount}</div>
-                      <div className="text-xs text-muted-foreground tracking-widest uppercase mt-1">Wizyt łącznie</div>
-                    </div>
-                    <div className="border border-border p-5 text-center">
-                      <div className="font-mono text-3xl font-medium" style={{ color: visitsToFree === 0 ? '#C9A96E' : 'inherit' }}>
-                        {visitsToFree === 0 ? '🎁' : visitsToFree}
-                      </div>
-                      <div className="text-xs text-muted-foreground tracking-widest uppercase mt-1">
-                        {visitsToFree === 0 ? 'Gratis gotowy!' : 'Do darmowej'}
-                      </div>
-                    </div>
-                    <div className="border border-border p-5 text-center">
-                      <div className="font-mono text-3xl font-medium text-gold">{earnedFree}</div>
-                      <div className="text-xs text-muted-foreground tracking-widest uppercase mt-1">Darmowe wizyty</div>
-                    </div>
+                  {/* Big loyalty counter */}
+                  <div className={`mb-8 p-8 border-2 text-center relative overflow-hidden ${visitsToFree === 0 ? 'border-gold bg-gold/5' : 'border-border bg-secondary/40'}`}>
+                    {visitsToFree === 0 ? (
+                      <>
+                        <div className="text-5xl mb-3">🎁</div>
+                        <div className="font-display text-2xl text-gold mb-1">Twoja darmowa wizyta czeka!</div>
+                        <p className="text-muted-foreground text-sm">Skontaktuj się, aby zarezerwować bezpłatny masaż.</p>
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-xs text-muted-foreground tracking-[0.3em] uppercase mb-3">Do darmowego masażu</div>
+                        <div className="font-mono text-7xl font-medium text-gold leading-none mb-2">{visitsToFree}</div>
+                        <div className="text-muted-foreground text-sm">
+                          {visitsToFree === 1 ? 'jeszcze jedna wizyta' : `jeszcze ${visitsToFree} wizyty`}
+                        </div>
+                      </>
+                    )}
                   </div>
 
-                  {/* Progress bar */}
-                  <div className="mb-10">
-                    <div className="flex justify-between text-xs text-muted-foreground tracking-widest uppercase mb-3">
-                      <span>Postęp w bieżącym cyklu</span>
-                      <span>{cyclePosition === 0 && completedCount > 0 ? 5 : cyclePosition} / 5</span>
+                  {/* Stamp card */}
+                  <div className="mb-8 p-6 border border-border bg-background">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-xs text-muted-foreground tracking-[0.25em] uppercase">Karta stemplowa</span>
+                      <span className="text-xs text-muted-foreground">{cyclePosition === 0 && completedCount > 0 ? 5 : cyclePosition} / 5 w tym cyklu</span>
                     </div>
-                    <div className="h-2 bg-border relative overflow-hidden">
+
+                    {/* Progress bar */}
+                    <div className="h-1.5 bg-border rounded-full overflow-hidden mb-5">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${((cyclePosition === 0 && completedCount > 0 ? 5 : cyclePosition) / 5) * 100}%` }}
-                        transition={{ duration: 1, delay: 0.3 }}
-                        className="h-full"
-                        style={{ backgroundColor: '#C9A96E' }}
+                        transition={{ duration: 1.2, delay: 0.2, ease: 'easeOut' }}
+                        className="h-full bg-gold rounded-full"
                       />
                     </div>
 
-                    {/* Stamp dots */}
-                    <div className="grid grid-cols-6 gap-2 mt-4">
+                    {/* Stamps */}
+                    <div className="flex justify-between gap-2">
                       {[1, 2, 3, 4, 5].map((n) => {
                         const filled = cyclePosition === 0 && completedCount > 0 ? true : n <= cyclePosition;
                         return (
-                          <div
+                          <motion.div
                             key={n}
-                            className="flex flex-col items-center gap-1"
+                            initial={{ scale: 0.7, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ delay: 0.1 * n, type: 'spring', stiffness: 280 }}
+                            className="flex-1 flex flex-col items-center gap-1.5"
                           >
                             <div
-                              className="w-10 h-10 rounded-full border-2 flex items-center justify-center text-sm font-mono transition-all"
+                              className="w-full aspect-square max-w-[52px] rounded-full border-2 flex items-center justify-center text-sm font-mono transition-all duration-300"
                               style={{
-                                borderColor: filled ? '#C9A96E' : 'var(--border-color, #e5e5e5)',
+                                borderColor: filled ? '#C9A96E' : 'hsl(var(--border))',
                                 backgroundColor: filled ? '#C9A96E' : 'transparent',
-                                color: filled ? '#0A0A0A' : 'var(--muted-color, #999)',
-                                fontWeight: filled ? '600' : 'normal',
+                                color: filled ? '#0A0A0A' : 'hsl(var(--muted-foreground))',
+                                fontWeight: filled ? '700' : 'normal',
                               }}
                             >
                               {filled ? '✓' : n}
                             </div>
-                          </div>
+                          </motion.div>
                         );
                       })}
                       {/* 6th = gift */}
-                      <div className="flex flex-col items-center gap-1">
+                      <motion.div
+                        initial={{ scale: 0.7, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.6, type: 'spring', stiffness: 280 }}
+                        className="flex-1 flex flex-col items-center gap-1.5"
+                      >
                         <div
-                          className="w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all"
+                          className="w-full aspect-square max-w-[52px] rounded-full border-2 flex items-center justify-center transition-all duration-300"
                           style={{
-                            borderColor: visitsToFree === 0 ? '#C9A96E' : 'var(--border-color, #e5e5e5)',
+                            borderColor: visitsToFree === 0 ? '#C9A96E' : 'hsl(var(--border))',
                             backgroundColor: visitsToFree === 0 ? '#C9A96E' : 'transparent',
                           }}
                         >
-                          <Gift size={16} style={{ color: visitsToFree === 0 ? '#0A0A0A' : '#999' }} />
+                          <Gift size={18} style={{ color: visitsToFree === 0 ? '#0A0A0A' : 'hsl(var(--muted-foreground))' }} />
                         </div>
-                      </div>
+                      </motion.div>
+                    </div>
+
+                    <div className="mt-4 text-center text-xs text-muted-foreground">
+                      Łącznie {completedCount} ukończonych {completedCount === 1 ? 'wizyta' : 'wizyt'} · {earnedFree} {earnedFree === 1 ? 'darmowa wizyta' : 'darmowych wizyt'} zdobyta
                     </div>
                   </div>
 
