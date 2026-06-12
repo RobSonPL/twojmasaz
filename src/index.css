@@ -4,10 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── LIGHT MODE (default) ───────────────────────────────── */
 @layer base {
   :root {
     --background: 0 0% 98%;
-    --foreground: 0 0% 4%;
+    --foreground: 0 0% 8%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 4%;
     --popover: 0 0% 100%;
@@ -96,6 +97,15 @@
     letter-spacing: -0.02em;
     line-height: 1.1;
   }
+}
+
+/* ── B&W (bezbarwny) – nadpisuje złoto szarością ─────────── */
+.theme-bw {
+  --gold: #888888;
+  --gold-light: #999999;
+  --gold-dark: #666666;
+  --accent: 0 0% 50%;
+  --ring: 0 0% 50%;
 }
 
 @layer utilities {

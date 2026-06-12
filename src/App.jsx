@@ -4,10 +4,12 @@ import { queryClientInstance } from '@/lib/query-client'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
+import { ThemeProvider } from '@/lib/ThemeContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
 // Page imports
 import Home from '@/pages/Home';
+import MyVisits from '@/pages/MyVisits';
 import BookingPage from '@/pages/BookingPage';
 import VouchersPage from '@/pages/VouchersPage';
 import AdminDashboard from '@/pages/admin/AdminDashboard';
@@ -42,6 +44,7 @@ const AuthenticatedApp = () => {
       <Route path="/" element={<Home />} />
       <Route path="/rezerwacja" element={<BookingPage />} />
       <Route path="/vouchery" element={<VouchersPage />} />
+      <Route path="/moje-wizyty" element={<MyVisits />} />
 
       {/* Admin */}
       <Route path="/admin" element={<AdminDashboard />} />
@@ -57,14 +60,16 @@ const AuthenticatedApp = () => {
 
 function App() {
   return (
-    <AuthProvider>
-      <QueryClientProvider client={queryClientInstance}>
-        <Router>
-          <AuthenticatedApp />
-        </Router>
-        <Toaster />
-      </QueryClientProvider>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <QueryClientProvider client={queryClientInstance}>
+          <Router>
+            <AuthenticatedApp />
+          </Router>
+          <Toaster />
+        </QueryClientProvider>
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 
