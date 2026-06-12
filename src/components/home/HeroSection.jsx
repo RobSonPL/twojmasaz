@@ -27,13 +27,13 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen bg-obsidian flex flex-col overflow-hidden"
+      className="relative min-h-screen bg-primary flex flex-col overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background gradient */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-obsidian via-obsidian to-[#1a1408]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/90" />
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -43,7 +43,7 @@ export default function HeroSection() {
             mixBlendMode: 'luminosity',
           }}
         />
-        <div className="absolute inset-0 bg-obsidian/60" />
+        <div className="absolute inset-0 bg-primary/60" />
       </div>
 
       {/* Floating cursor CTA */}
@@ -85,7 +85,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.9 }}
-              className="font-display text-bone leading-[0.9] mb-8"
+              className="font-display text-primary-foreground leading-[0.9] mb-8"
               style={{ fontSize: 'clamp(3.5rem, 9vw, 9rem)', letterSpacing: '-0.03em' }}
             >
               STREFA<br />
@@ -103,7 +103,7 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.0, duration: 0.8 }}
-              className="text-bone/50 text-lg max-w-md leading-relaxed font-body"
+              className="text-primary-foreground/50 text-lg max-w-md leading-relaxed font-body"
             >
               Profesjonalne masaże z dojazdem do Twojego domu lub w naszym salonie. Rezerwacja online w 60 sekund.
             </motion.p>
@@ -138,24 +138,24 @@ export default function HeroSection() {
             className="lg:col-span-5 flex flex-col gap-6 lg:pl-12"
           >
             <div className="border-l border-gold/30 pl-6">
-              <div className="font-mono text-4xl text-bone font-medium">4.9</div>
-              <div className="text-bone/40 text-xs tracking-widest uppercase mt-1">Średnia ocen klientów</div>
+              <div className="font-mono text-4xl text-primary-foreground font-medium">4.9</div>
+              <div className="text-primary-foreground/40 text-xs tracking-widest uppercase mt-1">Średnia ocen klientów</div>
             </div>
             <div className="border-l border-gold/30 pl-6">
-              <div className="font-mono text-4xl text-bone font-medium">500+</div>
-              <div className="text-bone/40 text-xs tracking-widest uppercase mt-1">Zadowolonych klientów</div>
+              <div className="font-mono text-4xl text-primary-foreground font-medium">500+</div>
+              <div className="text-primary-foreground/40 text-xs tracking-widest uppercase mt-1">Zadowolonych klientów</div>
             </div>
             <div className="border-l border-gold/30 pl-6">
-              <div className="font-mono text-4xl text-bone font-medium">6</div>
-              <div className="text-bone/40 text-xs tracking-widest uppercase mt-1">Rodzajów masażu</div>
+              <div className="font-mono text-4xl text-primary-foreground font-medium">6</div>
+              <div className="text-primary-foreground/40 text-xs tracking-widest uppercase mt-1">Rodzajów masażu</div>
             </div>
 
-            <div className="mt-4 p-6 border border-white/5 bg-white/[0.02]">
+            <div className="mt-4 p-6 border border-primary-foreground/5 bg-primary-foreground/[0.02]">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-bone/40 text-xs tracking-widest uppercase">Dostępne terminy</span>
+                <span className="text-primary-foreground/40 text-xs tracking-widest uppercase">Dostępne terminy</span>
               </div>
-              <p className="text-bone/70 text-sm">Dojazd do klienta i salon stacjonarny — wybierz opcję, która Ci odpowiada.</p>
+              <p className="text-primary-foreground/70 text-sm">Dojazd do klienta i salon stacjonarny — wybierz opcję, która Ci odpowiada.</p>
             </div>
           </motion.div>
         </div>
@@ -167,13 +167,13 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
         className="relative z-10 flex justify-center pb-8"
-      >
-        <a href="#uslugi" className="flex flex-col items-center gap-2 text-bone/30 hover:text-gold transition-colors group">
+        >
+        <a href="#uslugi" className="flex flex-col items-center gap-2 text-primary-foreground/30 hover:text-gold transition-colors group">
           <span className="text-xs tracking-widest uppercase">Przewiń</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="w-px h-10 bg-gradient-to-b from-bone/30 to-transparent group-hover:from-gold/50"
+            className="w-px h-10 bg-gradient-to-b from-primary-foreground/30 to-transparent group-hover:from-gold/50"
           />
         </a>
       </motion.div>

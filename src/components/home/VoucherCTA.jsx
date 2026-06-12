@@ -23,10 +23,10 @@ export default function VoucherCTA() {
               />
             </div>
             {/* Voucher preview overlay */}
-            <div className="absolute -bottom-8 -right-8 lg:right-8 w-48 h-28 bg-obsidian p-4 border border-gold/20">
+            <div className="absolute -bottom-8 -right-8 lg:right-8 w-48 h-28 bg-primary p-4 border border-gold/20">
               <div className="font-mono text-xs text-gold/60 tracking-widest mb-2">VOUCHER</div>
-              <div className="font-display text-xl text-bone">250 PLN</div>
-              <div className="font-mono text-xs text-bone/30 mt-1">WESOŁY MASAŻ</div>
+              <div className="font-display text-xl text-primary-foreground">250 PLN</div>
+              <div className="font-mono text-xs text-primary-foreground/30 mt-1">WESOŁY MASAŻ</div>
             </div>
           </motion.div>
 

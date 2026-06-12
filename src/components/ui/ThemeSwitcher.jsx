@@ -21,7 +21,7 @@ export default function ThemeSwitcher({ className = '' }) {
           className={`w-7 h-7 flex items-center justify-center rounded transition-all duration-200 ${
             theme === t.id
               ? 'bg-gold text-obsidian'
-              : 'text-current opacity-40 hover:opacity-80'
+              : 'text-foreground opacity-40 hover:opacity-80'
           }`}
         >
           {icons[t.id]}

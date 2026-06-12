@@ -12,7 +12,9 @@ const THEMES = [
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('wm-theme') || 'light-color';
+    const saved = localStorage.getItem('wm-theme');
+    // Validate saved theme is still valid
+    return THEMES.find(t => t.id === saved) ? saved : 'light-color';
   });
 
   useEffect(() => {
@@ -20,12 +22,20 @@ export function ThemeProvider({ children }) {
     const t = THEMES.find(t => t.id === theme) || THEMES[0];
     const root = document.documentElement;
 
-    // Remove all theme classes
+    // Remove all theme classes and reapply
     root.classList.remove('dark', 'theme-bw');
-
     if (t.dark) root.classList.add('dark');
     if (t.bw) root.classList.add('theme-bw');
   }, [theme]);
+
+  // Apply theme immediately on mount (before paint) to avoid flash
+  useEffect(() => {
+    const saved = localStorage.getItem('wm-theme');
+    const t = THEMES.find(t => t.id === saved) || THEMES[0];
+    document.documentElement.classList.remove('dark', 'theme-bw');
+    if (t.dark) document.documentElement.classList.add('dark');
+    if (t.bw) document.documentElement.classList.add('theme-bw');
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, themes: THEMES }}>

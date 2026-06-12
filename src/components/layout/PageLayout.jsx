@@ -1,9 +1,9 @@
-import Navbar from './Navbar';
+import Navbar from '@/components/layout/Navbar.jsx';
 import Footer from './Footer';
 
-export default function PageLayout({ children, dark = false }) {
+export default function PageLayout({ children }) {
   return (
-    <div className={`min-h-screen ${dark ? 'bg-obsidian' : 'bg-bone'}`}>
+    <div className="min-h-screen bg-background">
       <Navbar />
       <main>{children}</main>
       <Footer />

@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   return (
-    <PageLayout dark>
+    <PageLayout>
       <HeroSection />
       <ServicesSection services={services} />
       <HowItWorksSection />
