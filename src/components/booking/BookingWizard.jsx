@@ -104,8 +104,8 @@ function StepService({ services, booking, onChange, onNext }) {
 }
 
 // Step 2: Location (Home/Studio)
-function StepLocation({ booking, onChange, onNext, onBack }) {
-  const selectedService = defaultServices.find(s => s.id === booking.service_id);
+function StepLocation({ booking, onChange, onNext, onBack, services }) {
+  const selectedService = services.find(s => s.id === booking.service_id);
 
   return (
     <div>
@@ -516,7 +516,7 @@ export default function BookingWizard() {
           transition={{ duration: 0.3 }}
         >
           {step === 0 && <StepService services={services} booking={booking} onChange={update} onNext={() => setStep(1)} />}
-          {step === 1 && <StepLocation booking={booking} onChange={update} onNext={() => setStep(2)} onBack={() => setStep(0)} />}
+          {step === 1 && <StepLocation booking={booking} onChange={update} onNext={() => setStep(2)} onBack={() => setStep(0)} services={services} />}
           {step === 2 && <StepDateTime booking={booking} onChange={update} onNext={() => setStep(3)} onBack={() => setStep(1)} />}
           {step === 3 && <StepDetails booking={booking} onChange={update} onSubmit={submit} onBack={() => setStep(2)} submitting={submitting} />}
         </motion.div>
