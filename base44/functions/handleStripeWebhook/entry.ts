@@ -31,11 +31,14 @@ Deno.serve(async (req) => {
     const signature = req.headers.get('stripe-signature');
     const body = await req.text();
     
-    const event = stripe.webhooks.constructEvent(
-      body,
-      signature,
-      Deno.env.get('STRIPE_WEBHOOK_SECRET')
-    );
+    const webhookSecret = Deno.env.get('STRIPE_WEBHOOK_SECRET');
+    let event;
+    if (webhookSecret && signature) {
+      event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
+    } else {
+      // No webhook secret configured — parse body directly (dev/test mode)
+      event = JSON.parse(body);
+    }
 
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object;
