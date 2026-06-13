@@ -86,6 +86,13 @@ export default function VoucherBuilder({ services = [] }) {
     setSubmitting(true);
     setCheckoutError('');
 
+    // Stripe Checkout nie działa w iframe (podgląd edytora)
+    if (window.self !== window.top) {
+      setCheckoutError('Płatność online działa tylko z opublikowanej wersji aplikacji. Otwórz aplikację w nowej karcie, aby dokończyć zakup.');
+      setSubmitting(false);
+      return;
+    }
+
     try {
       const response = await base44.functions.invoke('createVoucherCheckout', {
         voucherType: data.type,
