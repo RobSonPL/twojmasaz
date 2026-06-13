@@ -3,7 +3,7 @@ import { base44 } from '@/api/base44Client';
 import { motion } from 'framer-motion';
 import PageLayout from '@/components/layout/PageLayout';
 import { Link } from 'react-router-dom';
-import { Gift, Calendar, Tag, User, LogOut, ChevronRight, Star, LayoutDashboard } from 'lucide-react';
+import { Gift, Calendar, Tag, User, LogOut, ChevronRight, Star, LayoutDashboard, X } from 'lucide-react';
 import { useAuth } from '@/lib/AuthContext';
 import LoyaltyTiers from '@/components/account/LoyaltyTiers';
 
@@ -78,6 +78,12 @@ export default function AccountPage() {
       </PageLayout>
     );
   }
+
+  const cancelBooking = async (bookingId) => {
+    if (!confirm('Czy na pewno chcesz anulować tę wizytę?')) return;
+    await base44.entities.Booking.update(bookingId, { status: 'cancelled' });
+    setBookings(prev => prev.map(b => b.id === bookingId ? { ...b, status: 'cancelled' } : b));
+  };
 
   const completedBookings = bookings.filter(b => b.status === 'completed');
   const completedCount = completedBookings.length;
@@ -239,14 +245,14 @@ export default function AccountPage() {
                   ) : (
                     <div className="space-y-2">
                       {bookings.map((b) => (
-                        <div key={b.id} className="flex items-center justify-between border border-border px-5 py-4">
-                          <div>
+                        <div key={b.id} className="flex items-center justify-between border border-border px-5 py-4 gap-4">
+                          <div className="flex-1 min-w-0">
                             <div className="font-medium text-foreground text-sm">{b.service_name}</div>
                             <div className="text-muted-foreground text-xs mt-0.5">
                               {b.booking_date} · {b.booking_time} · {b.booking_type === 'home' ? 'Dojazd' : 'Salon'}
                             </div>
                           </div>
-                          <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-3 flex-shrink-0">
                             <span className="font-mono text-gold text-sm">{b.service_price} zł</span>
                             <span className={`text-xs tracking-widest uppercase px-2 py-1 border ${
                               b.status === 'completed' ? 'border-green-500/30 text-green-500' :
@@ -258,6 +264,15 @@ export default function AccountPage() {
                                b.status === 'confirmed' ? 'Potwierdzona' :
                                b.status === 'cancelled' ? 'Anulowana' : 'Oczekuje'}
                             </span>
+                            {(b.status === 'confirmed' || b.status === 'pending') && (
+                              <button
+                                onClick={() => cancelBooking(b.id)}
+                                className="w-7 h-7 flex items-center justify-center border border-destructive/30 text-destructive hover:bg-destructive/10 transition-colors"
+                                title="Anuluj wizytę"
+                              >
+                                <X size={12} />
+                              </button>
+                            )}
                           </div>
                         </div>
                       ))}
