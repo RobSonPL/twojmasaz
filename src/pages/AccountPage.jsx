@@ -8,6 +8,7 @@ import { useAuth } from '@/lib/AuthContext';
 import LoyaltyTiers from '@/components/account/LoyaltyTiers';
 import PackagesTab from '@/components/account/PackagesTab';
 import ReferralSection from '@/components/referral/ReferralSection';
+import ClientCard from '@/components/account/ClientCard';
 
 const LOYALTY_GOAL = 5;
 
@@ -217,6 +218,9 @@ export default function AccountPage() {
                       </p>
                     </div>
                   )}
+
+                  {/* Client Card */}
+                  <ClientCard user={user} completedCount={completedCount} cyclesCompleted={cyclesCompleted} />
 
                   {/* Quick links */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

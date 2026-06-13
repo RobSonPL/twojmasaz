@@ -17,6 +17,7 @@ import AdminMessages from '@/pages/admin/AdminMessages';
 import AdminServices from '@/pages/admin/AdminServices';
 import AdminVouchers from '@/pages/admin/AdminVouchers';
 import AdminStats from '@/pages/admin/AdminStats';
+import AdminSoapNotes from '@/pages/admin/AdminSoapNotes';
 import AccountPage from '@/pages/AccountPage';
 import PackagesPage from '@/pages/PackagesPage';
 
@@ -57,6 +58,7 @@ const AuthenticatedApp = () => {
       <Route path="/admin/uslugi" element={<AdminServices />} />
       <Route path="/admin/vouchery" element={<AdminVouchers />} />
       <Route path="/admin/statystyki" element={<AdminStats />} />
+      <Route path="/admin/soap" element={<AdminSoapNotes />} />
 
       <Route path="*" element={<PageNotFound />} />
     </Routes>

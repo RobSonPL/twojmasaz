@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Calendar, Settings, MessageSquare, Gift, BarChart2, Menu, X, LogOut } from 'lucide-react';
+import { Calendar, Settings, MessageSquare, Gift, BarChart2, Menu, X, LogOut, FileText } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 
 const navItems = [
@@ -9,6 +9,7 @@ const navItems = [
   { label: 'Wiadomości', href: '/admin/wiadomosci', icon: MessageSquare },
   { label: 'Vouchery', href: '/admin/vouchery', icon: Gift },
   { label: 'Statystyki', href: '/admin/statystyki', icon: BarChart2 },
+  { label: 'Karty SOAP', href: '/admin/soap', icon: FileText },
 ];
 
 export default function AdminLayout({ children }) {
