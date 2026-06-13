@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, User } from 'lucide-react';
+import { Menu, X, User, LayoutDashboard } from 'lucide-react';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 import { useTheme } from '@/lib/ThemeContext';
+import { useAuth } from '@/lib/AuthContext';
 
 const NAV_LINKS = [
   { href: '/#uslugi', label: 'Usługi' },
@@ -17,6 +18,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const { theme } = useTheme() || { theme: 'light-color' };
+  const { user } = useAuth() || {};
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -62,6 +64,15 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
+          {user?.role === 'admin' && (
+            <Link
+              to="/admin"
+              className="hidden md:inline-flex items-center justify-center w-8 h-8 border border-gold/40 text-gold hover:border-gold transition-colors"
+              title="Panel admina"
+            >
+              <LayoutDashboard size={14} />
+            </Link>
+          )}
           <Link
             to="/konto"
             className="hidden md:inline-flex items-center justify-center w-8 h-8 border border-border text-muted-foreground hover:text-gold hover:border-gold transition-colors"
@@ -99,6 +110,15 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          {user?.role === 'admin' && (
+            <Link
+              to="/admin"
+              className="text-sm text-gold hover:text-gold/80 transition-colors tracking-widest uppercase"
+              onClick={() => setMenuOpen(false)}
+            >
+              Panel admina
+            </Link>
+          )}
           <Link
             to="/konto"
             className="text-sm text-muted-foreground hover:text-gold transition-colors tracking-widest uppercase"

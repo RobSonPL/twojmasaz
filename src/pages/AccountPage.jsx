@@ -3,7 +3,7 @@ import { base44 } from '@/api/base44Client';
 import { motion } from 'framer-motion';
 import PageLayout from '@/components/layout/PageLayout';
 import { Link } from 'react-router-dom';
-import { Gift, Calendar, Tag, User, LogOut, ChevronRight, Star } from 'lucide-react';
+import { Gift, Calendar, Tag, User, LogOut, ChevronRight, Star, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '@/lib/AuthContext';
 import LoyaltyTiers from '@/components/account/LoyaltyTiers';
 
@@ -104,13 +104,24 @@ export default function AccountPage() {
               </h1>
               <p className="text-muted-foreground mt-1 text-sm">{user?.email}</p>
             </div>
-            <button
-              onClick={() => logout()}
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mt-2"
-            >
-              <LogOut size={14} />
-              Wyloguj
-            </button>
+            <div className="flex items-center gap-4 mt-2">
+              {user?.role === 'admin' && (
+                <Link
+                  to="/admin"
+                  className="flex items-center gap-2 text-sm text-gold hover:text-gold/80 transition-colors"
+                >
+                  <LayoutDashboard size={14} />
+                  Panel admina
+                </Link>
+              )}
+              <button
+                onClick={() => logout()}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <LogOut size={14} />
+                Wyloguj
+              </button>
+            </div>
           </motion.div>
 
           {/* Tabs */}
