@@ -9,6 +9,7 @@ import GallerySection from '@/components/home/GallerySection';
 import LoyaltySection from '@/components/home/LoyaltySection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import ContactSection from '@/components/home/ContactSection';
+import AssistantChat from '@/components/chat/AssistantChat';
 
 export default function Home() {
   const [services, setServices] = useState([]);
@@ -29,6 +30,7 @@ export default function Home() {
       <VoucherCTA />
       <TestimonialsSection />
       <ContactSection />
+      <AssistantChat />
     </PageLayout>
   );
 }

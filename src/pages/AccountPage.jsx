@@ -3,9 +3,11 @@ import { base44 } from '@/api/base44Client';
 import { motion } from 'framer-motion';
 import PageLayout from '@/components/layout/PageLayout';
 import { Link } from 'react-router-dom';
-import { Gift, Calendar, Tag, User, LogOut, ChevronRight, Star, LayoutDashboard, X } from 'lucide-react';
+import { Gift, Calendar, Tag, User, LogOut, ChevronRight, Star, LayoutDashboard, X, Package, Users } from 'lucide-react';
 import { useAuth } from '@/lib/AuthContext';
 import LoyaltyTiers from '@/components/account/LoyaltyTiers';
+import PackagesTab from '@/components/account/PackagesTab';
+import ReferralSection from '@/components/referral/ReferralSection';
 
 const LOYALTY_GOAL = 5;
 
@@ -14,6 +16,8 @@ const tabs = [
   { id: 'visits', label: 'Wizyty', icon: Calendar },
   { id: 'loyalty', label: 'Lojalność', icon: Star },
   { id: 'vouchers', label: 'Vouchery', icon: Tag },
+  { id: 'packages', label: 'Karnety', icon: Package },
+  { id: 'referral', label: 'Polecenia', icon: Users },
 ];
 
 export default function AccountPage() {
@@ -21,6 +25,7 @@ export default function AccountPage() {
   const [activeTab, setActiveTab] = useState('overview');
   const [bookings, setBookings] = useState([]);
   const [vouchers, setVouchers] = useState([]);
+  const [packages, setPackages] = useState([]);
   const [loadingData, setLoadingData] = useState(false);
 
   useEffect(() => {
@@ -31,12 +36,14 @@ export default function AccountPage() {
 
   const loadUserData = async () => {
     setLoadingData(true);
-    const [b, v] = await Promise.all([
+    const [b, v, p] = await Promise.all([
       base44.entities.Booking.filter({ client_email: user.email }, '-booking_date', 50),
       base44.entities.Voucher.filter({ buyer_email: user.email }, '-created_date', 20),
+      base44.entities.Package.filter({ owner_email: user.email }, '-created_date', 20),
     ]);
     setBookings(b);
     setVouchers(v);
+    setPackages(p);
     setLoadingData(false);
   };
 
@@ -378,6 +385,16 @@ export default function AccountPage() {
                   {/* Progi lojalnościowe */}
                   <LoyaltyTiers completedCount={completedCount} totalSpend={totalSpend} />
                 </motion.div>
+              )}
+
+              {/* PACKAGES */}
+              {activeTab === 'packages' && (
+                <PackagesTab packages={packages} />
+              )}
+
+              {/* REFERRAL */}
+              {activeTab === 'referral' && (
+                <ReferralSection user={user} />
               )}
 
               {/* VOUCHERS */}

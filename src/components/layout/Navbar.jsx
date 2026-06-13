@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: '/#galeria', label: 'Galeria' },
   { href: '/#opinie', label: 'Opinie' },
   { href: '/vouchery', label: 'Vouchery' },
+  { href: '/pakiety', label: 'Pakiety' },
 ];
 
 export default function Navbar() {

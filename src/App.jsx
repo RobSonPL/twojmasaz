@@ -18,6 +18,7 @@ import AdminServices from '@/pages/admin/AdminServices';
 import AdminVouchers from '@/pages/admin/AdminVouchers';
 import AdminStats from '@/pages/admin/AdminStats';
 import AccountPage from '@/pages/AccountPage';
+import PackagesPage from '@/pages/PackagesPage';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -47,6 +48,7 @@ const AuthenticatedApp = () => {
       <Route path="/vouchery" element={<VouchersPage />} />
       <Route path="/moje-wizyty" element={<MyVisits />} />
       <Route path="/konto" element={<AccountPage />} />
+      <Route path="/pakiety" element={<PackagesPage />} />
 
       {/* Admin */}
       <Route path="/admin" element={<AdminDashboard />} />

@@ -1,0 +1,92 @@
+{
+  "name": "Package",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nazwa pakietu np. Pakiet 5 masa\u017cy relaksacyjnych"
+    },
+    "service_id": {
+      "type": "string",
+      "description": "ID us\u0142ugi przypisanej do pakietu"
+    },
+    "service_name": {
+      "type": "string",
+      "description": "Nazwa us\u0142ugi (kopia)"
+    },
+    "total_visits": {
+      "type": "number",
+      "description": "\u0141\u0105czna liczba wizyt w pakiecie"
+    },
+    "remaining_visits": {
+      "type": "number",
+      "description": "Pozosta\u0142a liczba wizyt do wykorzystania"
+    },
+    "price": {
+      "type": "number",
+      "description": "Cena pakietu w PLN"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "owner_email": {
+      "type": "string"
+    },
+    "owner_phone": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "used",
+        "expired"
+      ],
+      "default": "active"
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "paid"
+      ],
+      "default": "pending"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "name",
+    "total_visits",
+    "remaining_visits",
+    "price",
+    "owner_email"
+  ],
+  "rls": {
+    "create": null,
+    "read": {
+      "$or": [
+        {
+          "data.owner_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

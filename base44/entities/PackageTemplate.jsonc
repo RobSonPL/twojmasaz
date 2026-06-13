@@ -1,0 +1,41 @@
+{
+  "name": "PackageTemplate",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nazwa szablonu pakietu np. Pakiet 5 masa\u017cy"
+    },
+    "service_id": {
+      "type": "string"
+    },
+    "service_name": {
+      "type": "string"
+    },
+    "visits_count": {
+      "type": "number",
+      "description": "Liczba p\u0142atnych wizyt"
+    },
+    "bonus_visits": {
+      "type": "number",
+      "description": "Darmowe wizyty gratis (np. 1)",
+      "default": 0
+    },
+    "price": {
+      "type": "number",
+      "description": "Cena ca\u0142kowita pakietu w PLN"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "visits_count",
+    "price"
+  ]
+}

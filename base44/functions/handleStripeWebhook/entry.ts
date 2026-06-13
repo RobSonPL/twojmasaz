@@ -44,6 +44,56 @@ Deno.serve(async (req) => {
       const session = event.data.object;
       const metadata = session.metadata;
 
+      // Handle package purchase
+      if (metadata.purchaseType === 'package') {
+        const { createClientFromRequest } = await import('npm:@base44/sdk@0.8.31');
+        const baseClient = createClientFromRequest(req);
+        const expiresAt = new Date();
+        expiresAt.setMonth(expiresAt.getMonth() + 12);
+        const expiresDateStr = expiresAt.toISOString().split('T')[0];
+
+        await baseClient.asServiceRole.entities.Package.create({
+          name: metadata.templateName,
+          total_visits: Number(metadata.totalVisits),
+          remaining_visits: Number(metadata.totalVisits),
+          price: Number(metadata.price),
+          service_name: metadata.serviceName || undefined,
+          owner_name: metadata.ownerName,
+          owner_email: metadata.ownerEmail,
+          owner_phone: metadata.ownerPhone || undefined,
+          status: 'active',
+          payment_status: 'paid',
+          expires_at: expiresDateStr,
+        });
+
+        await sendEmailViaResend(
+          metadata.ownerEmail,
+          `Twój karnet Wesoły Masaż — ${metadata.templateName}`,
+          `<h2>Cześć ${metadata.ownerName}!</h2>
+          <p>Twój karnet masażowy został aktywowany.</p>
+          <div style="background:#f5f5f5;padding:20px;margin:20px 0;border-left:4px solid #C9A96E;">
+            <p><strong>Pakiet:</strong> ${metadata.templateName}</p>
+            <p><strong>Liczba wizyt:</strong> ${metadata.totalVisits}</p>
+            <p><strong>Ważny do:</strong> ${expiresDateStr}</p>
+          </div>
+          <p>Zarezerwuj pierwszą wizytę na <strong>wesoly-masaz.pl</strong></p>
+          <p style="color:#999;font-size:12px;">Wesoły Masaż · wesoly-masaz.pl</p>`
+        );
+
+        await sendEmailViaResend(
+          Deno.env.get('OWNER_EMAIL'),
+          `Nowy karnet sprzedany — ${metadata.templateName}`,
+          `<h2>Nowa sprzedaż karnetu</h2>
+          <p><strong>Pakiet:</strong> ${metadata.templateName}</p>
+          <p><strong>Klient:</strong> ${metadata.ownerName} (${metadata.ownerEmail})</p>
+          <p><strong>Wizyty:</strong> ${metadata.totalVisits}</p>
+          <p><strong>Kwota:</strong> ${metadata.price} PLN</p>`
+        );
+
+        console.log(`Package ${metadata.templateName} created for ${metadata.ownerEmail}`);
+        return Response.json({ received: true });
+      }
+
       const code = generateVoucherCode();
       const expiresAt = new Date();
       expiresAt.setMonth(expiresAt.getMonth() + 12);

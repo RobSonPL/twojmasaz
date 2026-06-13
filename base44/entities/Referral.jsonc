@@ -1,0 +1,68 @@
+{
+  "name": "Referral",
+  "type": "object",
+  "properties": {
+    "referrer_email": {
+      "type": "string",
+      "description": "Email osoby polecaj\u0105cej"
+    },
+    "referrer_name": {
+      "type": "string"
+    },
+    "referral_code": {
+      "type": "string",
+      "description": "Unikalny kod polecaj\u0105cy"
+    },
+    "referred_email": {
+      "type": "string",
+      "description": "Email nowego klienta"
+    },
+    "referred_name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "completed",
+        "rewarded"
+      ],
+      "default": "pending",
+      "description": "pending=zarejestrowany, completed=odby\u0142 wizyt\u0119, rewarded=nagroda przyznana"
+    },
+    "discount_amount": {
+      "type": "number",
+      "description": "Przyznana zni\u017cka w PLN",
+      "default": 30
+    }
+  },
+  "required": [
+    "referrer_email",
+    "referral_code"
+  ],
+  "rls": {
+    "create": null,
+    "read": {
+      "$or": [
+        {
+          "data.referrer_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
