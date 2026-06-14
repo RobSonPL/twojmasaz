@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Calendar, Settings, MessageSquare, Gift, BarChart2, Menu, X, LogOut, FileText } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 
@@ -14,7 +14,33 @@ const navItems = [
 
 export default function AdminLayout({ children }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    base44.auth.me()
+      .then(user => {
+        if (user?.role === 'admin') {
+          setIsAdmin(true);
+        } else {
+          navigate('/', { replace: true });
+        }
+      })
+      .catch(() => navigate('/login', { replace: true }))
+      .finally(() => setAuthChecked(true));
+  }, []);
+
+  if (!authChecked) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-obsidian">
+        <div className="w-8 h-8 border-2 border-white/10 border-t-gold rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (!isAdmin) return null;
 
   return (
     <div className="min-h-screen bg-[#0D0D0D] flex">
