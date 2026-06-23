@@ -93,6 +93,12 @@ export default function Footer() {
 
         <div className="luminous-rule mt-16 mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/30 tracking-wider">
+         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/30 tracking-wider">
+  <p>© {new Date().getFullYear()} Wesoły Masaż. Wszelkie prawa zastrzeżone.</p>
+  <a href="https://synapsehub.pl" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground/50 transition-colors">
+    created by: synapseHUB.pl
+  </a>
+</div>
           <p>© {new Date().getFullYear()} Wesoły Masaż. Wszelkie prawa zastrzeżone.</p>
           <p>Projekt z troską o Twój relaks</p>
         </div>
