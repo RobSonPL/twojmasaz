@@ -30,7 +30,7 @@ export default function Footer() {
                 <Instagram size={16} />
               </a>
               <a
-                href="https://wa.me/48000000000"
+                href="https://wa.me/48787907141"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-white/10 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-300"
@@ -70,8 +70,8 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={14} className="text-gold mt-1 flex-shrink-0" />
-                <a href="tel:+48000000000" className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors">
-                  +48 000 000 000
+                <a href="tel:+48787907141" className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors">
+                  +48 787907141
                 </a>
               </li>
               <li className="flex items-start gap-3">
