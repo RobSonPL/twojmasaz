@@ -99,7 +99,7 @@ export default function Footer() {
     created by: synapseHUB.pl
   </a>
 </div>
-          <p>© {new Date().getFullYear()} Wesoły Masaż. Wszelkie prawa zastrzeżone.</p>
+          
           <p>Projekt z troską o Twój relaks</p>
         </div>
       </div>
