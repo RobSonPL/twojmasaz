@@ -76,8 +76,8 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={14} className="text-gold mt-1 flex-shrink-0" />
-                <a href="mailto:kontakt@twojmasaz.life" className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors">
-                  kontakt@twojmasaz.life
+                <a href="mailto:irena@wewsolymasaz.pl" className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors">
+                  irena@wewsolymasaz.pl
                 </a>
               </li>
               <li className="flex items-start gap-3">
