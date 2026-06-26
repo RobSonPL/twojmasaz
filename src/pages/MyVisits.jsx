@@ -177,7 +177,7 @@ export default function MyVisits() {
                       <div className="font-display text-xl mb-2">Masz darmową wizytę!</div>
                       <p className="text-muted-foreground text-sm mb-4">Skontaktuj się, aby zarezerwować swój bezpłatny masaż.</p>
                       <a
-                        href="https://wa.me/48884060680?text=Cześć!%20Mam%20darmową%20wizytę%20z%20programu%20lojalnościowego%20i%20chciałbym/am%20ją%20zarezerwować."
+                        href="https://wa.me/48787907141?text=Cześć!%20Mam%20darmową%20wizytę%20z%20programu%20lojalnościowego%20i%20chciałbym/am%20ją%20zarezerwować."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 text-sm tracking-widest uppercase font-medium transition-colors"
