@@ -345,6 +345,7 @@ export default function VoucherBuilder({ services = [] }) {
                   <div>
                     <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">Dedykacja (opcjonalnie)</label>
                     <textarea rows={2} value={data.dedication} onChange={e => update({ dedication: e.target.value })}
+                    maxLength={200}
                       className="w-full border-b border-border bg-transparent py-3 text-foreground focus:outline-none focus:border-gold transition-colors resize-none" placeholder="np. Zasługujesz na chwilę tylko dla siebie..." />
                   </div>
                   <div className="border-t border-border pt-5">
