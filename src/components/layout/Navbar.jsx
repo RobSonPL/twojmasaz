@@ -65,7 +65,7 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
-          {user?.role === 'admin' && (
+          {user?.email === 'irena@wesolymasaz.pl' && (
             <Link
               to="/admin"
               className="hidden md:inline-flex items-center justify-center w-8 h-8 border border-gold/40 text-gold hover:border-gold transition-colors"
