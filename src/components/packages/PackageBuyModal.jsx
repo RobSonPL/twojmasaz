@@ -99,7 +99,7 @@ export default function PackageBuyModal({ template, onClose }) {
                 value={form.ownerPhone}
                 onChange={e => setForm(p => ({ ...p, ownerPhone: e.target.value }))}
                 className="w-full border-b border-border bg-transparent py-3 text-foreground focus:outline-none focus:border-gold transition-colors"
-                placeholder="+48 000 000 000"
+                placeholder="+48 787 907 141"
               />
             </div>
           </div>
