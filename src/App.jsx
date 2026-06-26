@@ -21,6 +21,15 @@ import AdminSoapNotes from '@/pages/admin/AdminSoapNotes';
 import AccountPage from '@/pages/AccountPage';
 import PackagesPage from '@/pages/PackagesPage';
 
+function AdminRoute({ children }) {
+  const { user, isAuthenticated, isLoadingAuth: loading } = useAuth();
+  if (loading) return null;
+  if (!isAuthenticated || user?.email !== 'irena@wesolymasaz.pl') {
+    return <Navigate to="/" replace />;
+  }
+  return children;
+}
+
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
 
