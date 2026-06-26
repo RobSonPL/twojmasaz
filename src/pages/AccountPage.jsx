@@ -301,7 +301,7 @@ export default function AccountPage() {
                       <div className="font-display text-2xl text-gold mb-2">Darmowy masaż czeka!</div>
                       <p className="text-muted-foreground text-sm mb-4">Masz prawo do bezpłatnej wizyty.</p>
                       <a
-                        href="https://wa.me/48884060680?text=Cześć!%20Mam%20darmową%20wizytę%20z%20programu%20lojalnościowego."
+                        href="https://wa.me/48787907141?text=Cześć!%20Mam%20darmową%20wizytę%20z%20programu%20lojalnościowego."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-8 py-4 text-sm tracking-widest uppercase text-white"
