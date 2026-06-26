@@ -38,7 +38,7 @@ Deno.serve(async (req) => {
             `📍 Tryb: ${typeLabel}\n` +
             `💰 Kwota: ${booking.service_price} PLN\n\n` +
             `Jeśli potrzebujesz odwołać lub zmienić termin, skontaktuj się jak najszybciej:\n` +
-            `📞 WhatsApp: +48 884 060 680\n\n` +
+            `📞 WhatsApp: +48 787 907 141\n\n` +
             `Do zobaczenia jutro!\n` +
             `Wesoły Masaż`,
         });
