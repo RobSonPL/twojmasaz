@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
 import { base44 } from '@/api/base44Client';
 import PageLayout from '@/components/layout/PageLayout';
+import { useEffect, useState } from 'react';
+import { base44 } from '@/api/base44Client';
+import PageLayout from '@/components/layout/PageLayout';
 import VoucherBuilder from '@/components/voucher/VoucherBuilder';
 import { motion } from 'framer-motion';
+import { useAuth } from '@/lib/AuthContext';
+import { Gift } from 'lucide-react';
 
 export default function VouchersPage() {
   const { isAuthenticated, navigateToLogin } = useAuth();
