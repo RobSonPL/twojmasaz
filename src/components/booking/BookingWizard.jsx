@@ -314,7 +314,7 @@ function StepDetails({ booking, onChange, onSubmit, onBack, submitting }) {
             value={booking.client_phone || ''}
             onChange={e => onChange({ client_phone: e.target.value })}
             className="w-full border-b border-border bg-transparent py-3 text-obsidian focus:outline-none focus:border-gold transition-colors text-base"
-            placeholder="+48 000 000 000"
+            placeholder="+48 787 907 141"
           />
         </div>
         <div className="sm:col-span-2">
