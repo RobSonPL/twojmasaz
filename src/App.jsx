@@ -21,6 +21,7 @@ import AdminSoapNotes from '@/pages/admin/AdminSoapNotes';
 import AccountPage from '@/pages/AccountPage';
 import PackagesPage from '@/pages/PackagesPage';
 import Register from '@/pages/Register';
+import Login from '@/pages/Login';
 
 function AdminRoute({ children }) {
   const { user, isAuthenticated, isLoadingAuth: loading } = useAuth();
@@ -61,6 +62,7 @@ const AuthenticatedApp = () => {
       <Route path="/konto" element={<AccountPage />} />
       <Route path="/pakiety" element={<PackagesPage />} />
       <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
 
             {/* Admin */}
       <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
