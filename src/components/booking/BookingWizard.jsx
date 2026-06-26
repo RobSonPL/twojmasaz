@@ -392,7 +392,7 @@ function StepDetails({ booking, onChange, onSubmit, onBack, submitting }) {
 
 // Step 5: Confirmation
 function StepConfirmation({ booking }) {
-  const OWNER_PHONE = '48884060680';
+  const OWNER_PHONE = '48787907141';
   const waMessage = encodeURIComponent(
     `Cześć! Właśnie dokonałem/am rezerwacji:\n\n` +
     `📋 Usługa: ${booking.service_name}\n` +
