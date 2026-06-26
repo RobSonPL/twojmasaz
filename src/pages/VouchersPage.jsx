@@ -35,7 +35,25 @@ export default function VouchersPage() {
           </motion.div>
 
           {/* Builder */}
-          <VoucherBuilder services={services} />
+          {isAuthenticated ? (
+            <VoucherBuilder services={services} />
+          ) : (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center py-16">
+              <div className="max-w-md mx-auto border border-border bg-secondary/20 p-8">
+                <Gift size={48} className="text-gold mx-auto mb-4" />
+                <h3 className="font-display text-2xl text-foreground mb-2">Voucher prezentowy</h3>
+                <p className="text-muted-foreground mb-6">
+                  Personalizowany voucher na kwotę lub konkretną usługę. Zaloguj się, aby kupić.
+                </p>
+                <button
+                  onClick={navigateToLogin}
+                  className="bg-foreground text-background px-10 py-4 text-sm tracking-widest uppercase hover:bg-gold hover:text-obsidian transition-all duration-300"
+                >
+                  Zaloguj się
+                </button>
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
     </PageLayout>
