@@ -111,7 +111,7 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          {user?.role === 'admin' && (
+          {user?.email === 'irena@wesolymasaz.pl' && (
             <Link
               to="/admin"
               className="text-sm text-gold hover:text-gold/80 transition-colors tracking-widest uppercase"
