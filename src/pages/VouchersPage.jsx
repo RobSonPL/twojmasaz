@@ -5,6 +5,7 @@ import VoucherBuilder from '@/components/voucher/VoucherBuilder';
 import { motion } from 'framer-motion';
 
 export default function VouchersPage() {
+  const { isAuthenticated, navigateToLogin } = useAuth();
   const [services, setServices] = useState([]);
 
   useEffect(() => {
