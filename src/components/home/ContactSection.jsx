@@ -109,7 +109,7 @@ export default function ContactSection() {
                       value={form.phone}
                       onChange={e => setForm({ ...form, phone: e.target.value })}
                       className="w-full border-b border-border bg-transparent py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:border-gold transition-colors text-base"
-                      placeholder="+48 000 000 000"
+                      placeholder="+48 787 907 141"
                     />
                   </div>
                 </div>
