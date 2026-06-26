@@ -39,7 +39,7 @@ export default function PackagesPage() {
             <div className="text-center py-24 border border-border">
               <p className="text-muted-foreground">Brak dostępnych pakietów. Zapytaj nas o indywidualną ofertę.</p>
               <a
-                href="https://wa.me/48884060680?text=Cześć!%20Pytam%20o%20pakiety%20masaży."
+                href="https://wa.me/48787907141?text=Cześć!%20Pytam%20o%20pakiety%20masaży."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block mt-6 px-8 py-3 text-sm tracking-widest uppercase text-white"
