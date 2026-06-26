@@ -119,7 +119,7 @@ export default function AccountPage() {
               <p className="text-muted-foreground mt-1 text-sm">{user?.email}</p>
             </div>
             <div className="flex items-center gap-4 mt-2">
-              {user?.role === 'admin' && (
+              {user?.email === 'irena@wesolymasaz.pl' && (
                 <Link
                   to="/admin"
                   className="flex items-center gap-2 text-sm text-gold hover:text-gold/80 transition-colors"
