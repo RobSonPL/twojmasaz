@@ -58,7 +58,7 @@ export default function MyVisits() {
                 type="tel"
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
-                placeholder="+48 000 000 000"
+                placeholder="+48 787 907 141"
                 className="w-full border border-border bg-background pl-10 pr-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:border-gold transition-colors text-sm"
               />
             </div>
