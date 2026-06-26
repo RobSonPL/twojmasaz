@@ -340,7 +340,7 @@ export default function VoucherBuilder({ services = [] }) {
                   <div>
                     <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">WhatsApp obdarowanego (opcjonalnie)</label>
                     <input type="tel" value={data.recipient_phone} onChange={e => update({ recipient_phone: e.target.value })}
-                      className="w-full border-b border-border bg-transparent py-3 text-foreground focus:outline-none focus:border-gold transition-colors" placeholder="+48 000 000 000" />
+                      className="w-full border-b border-border bg-transparent py-3 text-foreground focus:outline-none focus:border-gold transition-colors" placeholder="+48 787 907 141" />
                   </div>
                   <div>
                     <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">Dedykacja (opcjonalnie)</label>
