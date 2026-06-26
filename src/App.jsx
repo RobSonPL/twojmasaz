@@ -52,13 +52,13 @@ const AuthenticatedApp = () => {
       <Route path="/pakiety" element={<PackagesPage />} />
 
       {/* Admin */}
-      <Route path="/admin" element={<AdminDashboard />} />
-      <Route path="/admin/AdminDashboard" element={<AdminDashboard />} />
-      <Route path="/admin/wiadomosci" element={<AdminMessages />} />
-      <Route path="/admin/uslugi" element={<AdminServices />} />
-      <Route path="/admin/vouchery" element={<AdminVouchers />} />
-      <Route path="/admin/statystyki" element={<AdminStats />} />
-      <Route path="/admin/soap" element={<AdminSoapNotes />} />
+      <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+      <Route path="/admin/AdminDashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+      <Route path="/admin/wiadomosci" element={<AdminRoute><AdminMessages /></AdminRoute>} />
+      <Route path="/admin/uslugi" element={<AdminRoute><AdminServices /></AdminRoute>} />
+      <Route path="/admin/vouchery" element={<AdminRoute><AdminVouchers /></AdminRoute>} />
+      <Route path="/admin/statystyki" element={<AdminRoute><AdminStats /></AdminRoute>} />
+      <Route path="/admin/soap" element={<AdminRoute><AdminSoapNotes /></AdminRoute>} />
 
       <Route path="*" element={<PageNotFound />} />
     </Routes>
