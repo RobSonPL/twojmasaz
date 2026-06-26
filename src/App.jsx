@@ -20,6 +20,7 @@ import AdminStats from '@/pages/admin/AdminStats';
 import AdminSoapNotes from '@/pages/admin/AdminSoapNotes';
 import AccountPage from '@/pages/AccountPage';
 import PackagesPage from '@/pages/PackagesPage';
+import Register from '@/pages/Register';
 
 function AdminRoute({ children }) {
   const { user, isAuthenticated, isLoadingAuth: loading } = useAuth();
