@@ -97,6 +97,7 @@ export default function VoucherBuilder({ services = [] }) {
       const response = await base44.functions.invoke('createVoucherCheckout', {
         voucherType: data.type,
         voucherValue: Number(data.value),
+        serviceId: data.service_id || '',
         serviceName: data.service_name || '',
         recipientName: data.recipient_name,
         recipientEmail: data.recipient_email || '',

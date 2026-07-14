@@ -26,11 +26,7 @@ export default function PackageBuyModal({ template, onClose }) {
 
     try {
       const response = await base44.functions.invoke('createPackageCheckout', {
-        templateName: template.name,
-        visitsCount: template.visits_count,
-        bonusVisits: template.bonus_visits || 0,
-        price: template.price,
-        serviceName: template.service_name || '',
+        templateId: template.id,
         ownerName: form.ownerName,
         ownerEmail: form.ownerEmail,
         ownerPhone: form.ownerPhone,
