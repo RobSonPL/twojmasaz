@@ -1,5 +1,14 @@
 import Stripe from 'npm:stripe@14.8.0';
 
+function escapeHTML(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function generateVoucherCode() {
   return 'WM-' + Math.random().toString(36).substring(2, 8).toUpperCase();
 }
@@ -69,10 +78,10 @@ Deno.serve(async (req) => {
         await sendEmailViaResend(
           metadata.ownerEmail,
           `Twój karnet Wesoły Masaż — ${metadata.templateName}`,
-          `<h2>Cześć ${metadata.ownerName}!</h2>
+          `<h2>Cześć ${escapeHTML(metadata.ownerName)}!</h2>
           <p>Twój karnet masażowy został aktywowany.</p>
           <div style="background:#f5f5f5;padding:20px;margin:20px 0;border-left:4px solid #C9A96E;">
-            <p><strong>Pakiet:</strong> ${metadata.templateName}</p>
+            <p><strong>Pakiet:</strong> ${escapeHTML(metadata.templateName)}</p>
             <p><strong>Liczba wizyt:</strong> ${metadata.totalVisits}</p>
             <p><strong>Ważny do:</strong> ${expiresDateStr}</p>
           </div>
@@ -84,8 +93,8 @@ Deno.serve(async (req) => {
           Deno.env.get('OWNER_EMAIL'),
           `Nowy karnet sprzedany — ${metadata.templateName}`,
           `<h2>Nowa sprzedaż karnetu</h2>
-          <p><strong>Pakiet:</strong> ${metadata.templateName}</p>
-          <p><strong>Klient:</strong> ${metadata.ownerName} (${metadata.ownerEmail})</p>
+          <p><strong>Pakiet:</strong> ${escapeHTML(metadata.templateName)}</p>
+          <p><strong>Klient:</strong> ${escapeHTML(metadata.ownerName)} (${metadata.ownerEmail})</p>
           <p><strong>Wizyty:</strong> ${metadata.totalVisits}</p>
           <p><strong>Kwota:</strong> ${metadata.price} PLN</p>`
         );
@@ -125,12 +134,12 @@ Deno.serve(async (req) => {
         metadata.buyerEmail,
         `Voucher prezentowy Wesoły Masaż — ${code}`,
         `
-          <h2>Cześć ${metadata.buyerName}!</h2>
+          <h2>Cześć ${escapeHTML(metadata.buyerName)}!</h2>
           <p>Twój voucher został pomyślnie aktywowany.</p>
           <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-left: 4px solid #C9A96E;">
             <p><strong>Kod vouchera:</strong> ${code}</p>
-            <p><strong>Rodzaj:</strong> ${metadata.voucherType === 'service' ? `Usługa: ${metadata.serviceName}` : `Kwota: ${metadata.voucherValue} PLN`}</p>
-            <p><strong>Dla:</strong> ${metadata.recipientName}</p>
+            <p><strong>Rodzaj:</strong> ${metadata.voucherType === 'service' ? `Usługa: ${escapeHTML(metadata.serviceName)}` : `Kwota: ${metadata.voucherValue} PLN`}</p>
+            <p><strong>Dla:</strong> ${escapeHTML(metadata.recipientName)}</p>
             <p><strong>Ważny do:</strong> ${expiresDateStr}</p>
           </div>
           <p>Voucher można wykorzystać przy rezerwacji na stronie lub telefonicznie.</p>
@@ -144,13 +153,13 @@ Deno.serve(async (req) => {
           metadata.recipientEmail,
           'Masz voucher prezentowy Wesoły Masaż! 🎁',
           `
-            <h2>Cześć ${metadata.recipientName}!</h2>
+            <h2>Cześć ${escapeHTML(metadata.recipientName)}!</h2>
             <p>Ktoś pomyślał o Tobie i podarował Ci wyjątkowy prezent — voucher na masaż.</p>
             <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-left: 4px solid #C9A96E;">
               <p><strong>Kod vouchera:</strong> ${code}</p>
-              <p><strong>Rodzaj:</strong> ${metadata.voucherType === 'service' ? `Usługa: ${metadata.serviceName}` : `Kwota: ${metadata.voucherValue} PLN`}</p>
+              <p><strong>Rodzaj:</strong> ${metadata.voucherType === 'service' ? `Usługa: ${escapeHTML(metadata.serviceName)}` : `Kwota: ${metadata.voucherValue} PLN`}</p>
               <p><strong>Ważny do:</strong> ${expiresDateStr}</p>
-              ${metadata.dedication ? `<p style="font-style: italic; color: #666;">"${metadata.dedication}"</p>` : ''}
+              ${metadata.dedication ? `<p style="font-style: italic; color: #666;">"${escapeHTML(metadata.dedication)}"</p>` : ''}
             </div>
             <p>Zarezerwuj swoją wizytę na stronie <strong>wesoly-masaz.pl</strong> lub zadzwoń.</p>
             <p style="color: #999; font-size: 12px;">Wesoły Masaż · wesoly-masaz.pl</p>
@@ -165,9 +174,9 @@ Deno.serve(async (req) => {
         `
           <h2>Nowa sprzedaż vouchera</h2>
           <p><strong>Kod:</strong> ${code}</p>
-          <p><strong>Kupujący:</strong> ${metadata.buyerName} (${metadata.buyerEmail})</p>
-          <p><strong>Odbiorca:</strong> ${metadata.recipientName}</p>
-          <p><strong>Rodzaj:</strong> ${metadata.voucherType === 'service' ? `Usługa: ${metadata.serviceName}` : `Kwota: ${metadata.voucherValue} PLN`}</p>
+          <p><strong>Kupujący:</strong> ${escapeHTML(metadata.buyerName)} (${metadata.buyerEmail})</p>
+          <p><strong>Odbiorca:</strong> ${escapeHTML(metadata.recipientName)}</p>
+          <p><strong>Rodzaj:</strong> ${metadata.voucherType === 'service' ? `Usługa: ${escapeHTML(metadata.serviceName)}` : `Kwota: ${metadata.voucherValue} PLN`}</p>
           <p><strong>Kwota:</strong> ${metadata.voucherValue} PLN</p>
           <p><strong>Ważny do:</strong> ${expiresDateStr}</p>
         `

@@ -151,6 +151,9 @@ function StepLocation({ booking, onChange, onNext, onBack, services }) {
             exit={{ opacity: 0, height: 0 }}
             className="mb-8 overflow-hidden"
           >
+            <div className="p-3 border border-gold/30 bg-gold/5 text-sm text-muted-foreground mb-4">
+              Dojazd realizujemy w promieniu 50 km od Jaczkowic, woj. dolnośląskie.
+            </div>
             <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">
               Adres dojazdu *
             </label>

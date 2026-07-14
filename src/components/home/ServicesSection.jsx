@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Home, Building2 } from 'lucide-react';
+import ReachMap from '@/components/home/ReachMap';
 
 const defaultServices = [
   {
@@ -191,6 +192,16 @@ export default function ServicesSection({ services }) {
             <ServiceRow key={service.id} service={service} index={index} />
           ))}
         </div>
+
+        {/* Reach map */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <ReachMap />
+        </motion.div>
 
         {/* CTA */}
         <motion.div

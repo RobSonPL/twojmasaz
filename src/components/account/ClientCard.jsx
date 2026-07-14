@@ -5,6 +5,43 @@ import jsPDF from 'jspdf';
 
 const LOYALTY_GOAL = 5;
 
+function escapeHTML(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+let cachedFontBase64 = null;
+
+async function loadPolishFont(doc) {
+  if (cachedFontBase64 === null) {
+    try {
+      const response = await fetch('https://cdn.jsdelivr.net/npm/dejavu-fonts-ttf@2.37.3/ttf/DejaVuSans.ttf');
+      const buffer = await response.arrayBuffer();
+      let binary = '';
+      const bytes = new Uint8Array(buffer);
+      const chunk = 8192;
+      for (let i = 0; i < bytes.length; i += chunk) {
+        binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+      }
+      cachedFontBase64 = btoa(binary);
+    } catch (e) {
+      console.warn('Failed to load Polish font, falling back to helvetica', e);
+      cachedFontBase64 = false;
+    }
+  }
+
+  if (cachedFontBase64) {
+    doc.addFileToVFS('DejaVuSans.ttf', cachedFontBase64);
+    doc.addFont('DejaVuSans.ttf', 'DejaVu', 'normal');
+    doc.addFont('DejaVuSans.ttf', 'DejaVu', 'bold');
+    return 'DejaVu';
+  }
+  return 'helvetica';
+}
+
 export default function ClientCard({ user, completedCount, cyclesCompleted }) {
   const [generating, setGenerating] = useState(false);
   const cyclePosition = completedCount % LOYALTY_GOAL;
@@ -26,15 +63,18 @@ export default function ClientCard({ user, completedCount, cyclesCompleted }) {
     doc.setLineWidth(0.4);
     doc.rect(2, 2, 81, 51);
 
+    // Load font with Polish chars
+    const fontName = await loadPolishFont(doc);
+
     // Header logo text
     doc.setTextColor(201, 169, 110);
     doc.setFontSize(6);
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(fontName, 'bold');
     doc.text('WESOŁY MASAŻ', 5, 9);
 
     doc.setTextColor(250, 250, 250);
     doc.setFontSize(5);
-    doc.setFont('helvetica', 'normal');
+    doc.setFont(fontName, 'normal');
     doc.text('KARTA KLIENTA', 5, 13);
 
     // Divider
@@ -45,12 +85,12 @@ export default function ClientCard({ user, completedCount, cyclesCompleted }) {
     // Client name
     doc.setTextColor(250, 250, 250);
     doc.setFontSize(10);
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(fontName, 'bold');
     doc.text(user?.full_name || 'Klient', 5, 23);
 
     // Email
     doc.setFontSize(5);
-    doc.setFont('helvetica', 'normal');
+    doc.setFont(fontName, 'normal');
     doc.setTextColor(150, 150, 150);
     doc.text(user?.email || '', 5, 27);
 
@@ -89,9 +129,10 @@ export default function ClientCard({ user, completedCount, cyclesCompleted }) {
     // Bottom
     doc.setTextColor(80, 80, 80);
     doc.setFontSize(4);
-    doc.text('884 060 680  ·  wesoly-masaz.pl', 5, 52);
+    doc.text(escapeHTML('884 060 680  ·  wesoly-masaz.pl'), 5, 52);
 
-    doc.save(`karta-klienta-${user?.full_name?.replace(/\s+/g, '-') || 'WM'}.pdf`);
+    const safeName = (user?.full_name || 'WM').replace(/[^a-zA-Z0-9_-]/g, '');
+    doc.save(`karta-klienta-${safeName}.pdf`);
     setGenerating(false);
   };
 
