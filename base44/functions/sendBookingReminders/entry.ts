@@ -2,9 +2,16 @@ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.31';
 
 Deno.serve(async (req) => {
   try {
+    // Verify the request is from an authorized scheduler via preshared token
+    const schedulerToken = Deno.env.get("SCHEDULER_TOKEN");
+    let body = {};
+    try { body = await req.json(); } catch (e) { /* empty body is fine */ }
+    if (!schedulerToken || body.scheduler_token !== schedulerToken) {
+      return Response.json({ error: 'Unauthorized' }, { status: 403 });
+    }
+
     const base44 = createClientFromRequest(req);
 
-    // This function is called by a scheduled automation (no user auth needed)
     // Use service role for all operations
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
