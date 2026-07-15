@@ -8,6 +8,7 @@ import VoucherCTA from '@/components/home/VoucherCTA';
 import GallerySection from '@/components/home/GallerySection';
 import LoyaltySection from '@/components/home/LoyaltySection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
+import FaqSection from '@/components/home/FaqSection';
 import ContactSection from '@/components/home/ContactSection';
 import AssistantChat from '@/components/chat/AssistantChat';
 
@@ -29,6 +30,7 @@ export default function Home() {
       <LoyaltySection />
       <VoucherCTA />
       <TestimonialsSection />
+      <FaqSection />
       <ContactSection />
       <AssistantChat />
     </PageLayout>
