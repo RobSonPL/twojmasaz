@@ -1,0 +1,64 @@
+# robots.txt — Wesoły Masaż
+# Zoptymalizowany pod wyszukiwarki tradycyjne i AI / LLM
+
+# --- Wyszukiwarki tradycyjne ---
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /konto
+Disallow: /login
+Disallow: /register
+Disallow: /reset-password
+Disallow: /forgot-password
+
+# --- Wyszukiwarki AI / LLM ---
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+# Google Gemini / AI Overview
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: claude-WebFetcher
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Microsoft Copilot / Bing AI
+User-agent: Bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Other AI crawlers
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+# --- Sitemap ---
+Sitemap: https://wesolymasaz.pl/sitemap.xml

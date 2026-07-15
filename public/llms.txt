@@ -1,0 +1,70 @@
+# Wesoły Masaż
+
+> Profesjonalny salon masażu z dojazdem do klienta (do 50 km od Jaczkowic) oraz wizytami stacjonarnymi. Masaż relaksacyjny, terapeutyczny, sportowy i specjalistyczny.
+
+## O nas
+
+Wesoły Masaż to salon oferujący profesjonalne usługi masażu z możliwością dojazdu do klienta w promieniu 50 km od Jaczkowice (woj. opolskie) oraz wizyt w salonie stacjonarnym. Specjalizujemy się w masażu relaksacyjnym, terapeutycznym, sportowym i specjalistycznym (m.in. gorące kamienie).
+
+## Usługi
+
+- **Masaż relaksacyjny** (60/90 min) — od 150 zł
+- **Masaż terapeutyczny** (60 min) — od 180 zł
+- **Masaż sportowy** (60 min) — od 170 zł
+- **Gorące kamienie** (90 min) — od 250 zł
+- **Masaż dojazdowy** — dojazd do 50 km od Jaczkowice
+
+## Jak to działa
+
+1. Wybierz usługę (relaksacyjny, terapeutyczny, sportowy, specjalistyczny)
+2. Wybierz lokalizację — dojazd lub salon
+3. Wybierz termin i godzinę
+4. Podaj dane kontaktowe
+5. Otrzymaj potwierdzenie e-mail i przypomnienie przed wizytą
+
+## Vouchery prezentowe
+
+Vouchery na konkretną usługę lub dowolną kwotę, z dedykacją, ważne 12 miesięcy. Płatność online, natychmiastowa dostawa.
+
+## Pakiety wizyt
+
+Karnety na 5, 10 i więcej masaży z darmowymi wizytami gratis. Program lojalnościowy — co 5. wizyta gratis.
+
+## Program lojalnościowy
+
+Po każdych 5 zakończonych wizytach klient otrzymuje darmowy masaż. Progi lojalnościowe: Srebrny, Złoty, Diamentowy.
+
+## System poleceń
+
+Polecaj znajomym i otrzymuj zniżki. Kod polecający WM-xxxx, 30 zł zniżki dla nowego klienta.
+
+## Przygotowanie do masażu
+
+- Na 2h przed masażem zjedź lekki posiłek
+- Pij dużo wody
+- Weź ciepły prysznic przed wizytą
+- Przygotuj miejsce min. 2×3 m (przy dojeździe)
+- Masażysta przywozi stół, olejki i muzykę
+
+## Płatności
+
+- Gotówka i karta po masażu
+- BLIK przy rezerwacji online
+- Stripe Checkout dla voucherów i pakietów
+
+## Kontakt
+
+- **Dojazd:** do 50 km od Jaczkowice, woj. opolskie
+- **WhatsApp:** +48 787 907 141
+- **E-mail:** irena@wesolymasaz.pl
+- **Rezerwacja online:** https://wesolymasaz.pl/rezerwacja
+
+## Ważne linki
+
+- [Strona główna](https://wesolymasaz.pl/)
+- [Rezerwacja](https://wesolymasaz.pl/rezerwacja)
+- [Vouchery](https://wesolymasaz.pl/vouchery)
+- [Pakiety](https://wesolymasaz.pl/pakiety)
+- [Usługi](https://wesolymasaz.pl/#uslugi)
+- [FAQ](https://wesolymasaz.pl/#faq)
+- [Kontakt](https://wesolymasaz.pl/#kontakt)

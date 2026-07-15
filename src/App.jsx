@@ -22,6 +22,7 @@ import AccountPage from '@/pages/AccountPage';
 import PackagesPage from '@/pages/PackagesPage';
 import Register from '@/pages/Register';
 import Login from '@/pages/Login';
+import RouteSEO from '@/components/RouteSEO';
 
 function AdminRoute({ children }) {
   const { user, isAuthenticated, isLoadingAuth: loading } = useAuth();
@@ -53,28 +54,31 @@ const AuthenticatedApp = () => {
   }
 
   return (
-    <Routes>
-      {/* Public */}
-      <Route path="/" element={<Home />} />
-      <Route path="/rezerwacja" element={<BookingPage />} />
-      <Route path="/vouchery" element={<VouchersPage />} />
-      <Route path="/moje-wizyty" element={<MyVisits />} />
-      <Route path="/konto" element={<AccountPage />} />
-      <Route path="/pakiety" element={<PackagesPage />} />
-      <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
+    <>
+      <RouteSEO />
+      <Routes>
+        {/* Public */}
+        <Route path="/" element={<Home />} />
+        <Route path="/rezerwacja" element={<BookingPage />} />
+        <Route path="/vouchery" element={<VouchersPage />} />
+        <Route path="/moje-wizyty" element={<MyVisits />} />
+        <Route path="/konto" element={<AccountPage />} />
+        <Route path="/pakiety" element={<PackagesPage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
-            {/* Admin */}
-      <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
-      <Route path="/admin/AdminDashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
-      <Route path="/admin/wiadomosci" element={<AdminRoute><AdminMessages /></AdminRoute>} />
-      <Route path="/admin/uslugi" element={<AdminRoute><AdminServices /></AdminRoute>} />
-      <Route path="/admin/vouchery" element={<AdminRoute><AdminVouchers /></AdminRoute>} />
-      <Route path="/admin/statystyki" element={<AdminRoute><AdminStats /></AdminRoute>} />
-      <Route path="/admin/soap" element={<AdminRoute><AdminSoapNotes /></AdminRoute>} />
+        {/* Admin */}
+        <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+        <Route path="/admin/AdminDashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+        <Route path="/admin/wiadomosci" element={<AdminRoute><AdminMessages /></AdminRoute>} />
+        <Route path="/admin/uslugi" element={<AdminRoute><AdminServices /></AdminRoute>} />
+        <Route path="/admin/vouchery" element={<AdminRoute><AdminVouchers /></AdminRoute>} />
+        <Route path="/admin/statystyki" element={<AdminRoute><AdminStats /></AdminRoute>} />
+        <Route path="/admin/soap" element={<AdminRoute><AdminSoapNotes /></AdminRoute>} />
 
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </>
   );
 };
 
