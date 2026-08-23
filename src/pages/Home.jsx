@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { base44 } from '@/api/base44Client';
 import PageLayout from '@/components/layout/PageLayout';
 import HeroSection from '@/components/home/HeroSection';
+import B2BSection from '@/components/home/B2BSection';
 import ServicesSection from '@/components/home/ServicesSection';
+import PriceCalculator from '@/components/home/PriceCalculator';
+import ReachMapSection from '@/components/home/ReachMapSection';
 import HowItWorksSection from '@/components/home/HowItWorksSection';
 import VoucherCTA from '@/components/home/VoucherCTA';
 import GallerySection from '@/components/home/GallerySection';
@@ -24,7 +27,10 @@ export default function Home() {
   return (
     <PageLayout>
       <HeroSection />
+      <B2BSection />
       <ServicesSection services={services} />
+      <PriceCalculator />
+      <ReachMapSection />
       <HowItWorksSection />
       <GallerySection />
       <LoyaltySection />
