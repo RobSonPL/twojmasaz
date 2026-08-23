@@ -14,24 +14,9 @@ const photos = [
     span: '',
   },
   {
-    url: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=700&q=85&auto=format&fit=crop',
-    caption: 'Masaż terapeutyczny — rozluźnianie napięć',
-    span: '',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1540555700478-4be28fbed1cd?w=900&q=85&auto=format&fit=crop',
-    caption: 'Masaż gorącymi kamieniami',
-    span: '',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=85&auto=format&fit=crop',
-    caption: 'Masaż relaksacyjny — efekt głębokiego odprężenia',
+    url: 'https://media.base44.com/images/public/6a2baccccdddab5d8fdcec15/700924678_generated_image.png',
+    caption: 'Masaż relaksacyjny — w rękach terapeutki',
     span: 'row-span-2',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=700&q=85&auto=format&fit=crop',
-    caption: 'Masaż i pielęgnacja twarzy',
-    span: '',
   },
   {
     url: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=700&q=85&auto=format&fit=crop',
@@ -39,13 +24,28 @@ const photos = [
     span: '',
   },
   {
-    url: 'https://images.unsplash.com/photo-1605336113154-a3eed0e0a0c0?w=900&q=85&auto=format&fit=crop',
-    caption: 'Atmosfera — świece i ciepłe światło',
+    url: 'https://images.unsplash.com/photo-1693578538512-fc66f318c833?w=900&q=85&auto=format&fit=crop',
+    caption: 'Wnętrze salonu — strefa wypoczynku',
     span: '',
   },
   {
-    url: 'https://images.unsplash.com/photo-1583944106146-8e0d3a3e2c1f?w=700&q=85&auto=format&fit=crop',
-    caption: 'Masaż stóp i refleksologia',
+    url: 'https://media.base44.com/images/public/6a2baccccdddab5d8fdcec15/ab2e77217_generated_image.png',
+    caption: 'Masaż gorącymi kamieniami',
+    span: '',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1630835425197-50feeba99ecd?w=700&q=85&auto=format&fit=crop',
+    caption: 'Kącik relaksu — detale wnętrza',
+    span: '',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1610289982320-3891f7c9fd6d?w=700&q=85&auto=format&fit=crop',
+    caption: 'Strefa SPA — kąpiel relaksująca',
+    span: '',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=700&q=85&auto=format&fit=crop',
+    caption: 'Masaż i pielęgnacja twarzy',
     span: '',
   },
 ];
