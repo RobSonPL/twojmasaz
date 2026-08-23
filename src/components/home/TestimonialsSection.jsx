@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
     : '—';
 
   return (
-    <section id="opinie" className="section-padding bg-primary">
+    <section id="opinie" className="section-padding bg-secondary/30">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
@@ -53,7 +53,7 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="font-display text-4xl lg:text-6xl mt-4 text-primary-foreground"
+              className="font-display text-4xl lg:text-6xl mt-4 text-foreground"
             >
               Co mówią<br />klienci
             </motion.h2>
@@ -73,11 +73,11 @@ export default function TestimonialsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mb-12 p-8 border border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mb-12 p-8 border border-border/10 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="text-center md:text-left">
-            <div className="font-mono text-5xl text-primary-foreground">{avgRating}</div>
-            <div className="text-primary-foreground/30 text-xs tracking-widest uppercase mt-2">
+            <div className="font-mono text-5xl text-foreground">{avgRating}</div>
+            <div className="text-foreground/30 text-xs tracking-widest uppercase mt-2">
               Średnia z {reviews.length} opinii
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function TestimonialsSection() {
               <Star key={i} size={20} className="text-gold fill-gold" />
             ))}
           </div>
-          <div className="text-primary-foreground/30 text-sm text-center md:text-right max-w-xs">
+          <div className="text-foreground/30 text-sm text-center md:text-right max-w-xs">
             Twoja opinia pomoże innym podjąć decyzję i pozwoli nam stale ulepszać nasze usługi.
           </div>
         </motion.div>
@@ -97,11 +97,11 @@ export default function TestimonialsSection() {
         {/* Reviews slider */}
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <div className="w-8 h-8 border-2 border-primary-foreground/20 border-t-gold rounded-full animate-spin" />
+            <div className="w-8 h-8 border-2 border-border/20 border-t-gold rounded-full animate-spin" />
           </div>
         ) : reviews.length === 0 ? (
-          <div className="text-center py-20 border border-primary-foreground/10">
-            <p className="text-primary-foreground/40 mb-4">Bądź pierwszą osobą, która podzieli się opinią!</p>
+          <div className="text-center py-20 border border-border/10">
+            <p className="text-foreground/40 mb-4">Bądź pierwszą osobą, która podzieli się opinią!</p>
             <button
               onClick={() => setShowForm(true)}
               className="text-gold text-sm tracking-widest uppercase hover:underline"

@@ -19,7 +19,7 @@ const perks = [
 
 export default function LoyaltySection() {
   return (
-    <section id="program-lojalnosciowy" className="py-32 overflow-hidden bg-primary">
+    <section id="program-lojalnosciowy" className="py-32 overflow-hidden bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -39,7 +39,7 @@ export default function LoyaltySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="font-display text-4xl lg:text-6xl mt-4 leading-tight text-primary-foreground"
+              className="font-display text-4xl lg:text-6xl mt-4 leading-tight text-foreground"
             >
               5 masaży,<br />
               <em className="not-italic text-gold">szósty gratis</em>
@@ -58,7 +58,7 @@ export default function LoyaltySection() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="text-lg leading-relaxed mb-8 text-primary-foreground/60"
+              className="text-lg leading-relaxed mb-8 text-foreground/60"
             >
               Regularne masaże to najlepsza inwestycja w zdrowie. Dlatego nagradzam lojalność — po każdych pięciu wizytach otrzymujesz szósty masaż całkowicie bezpłatnie.
             </motion.p>
@@ -71,7 +71,7 @@ export default function LoyaltySection() {
               className="space-y-3 mb-10"
             >
               {perks.map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-primary-foreground/60">
+                <li key={i} className="flex items-start gap-3 text-sm text-foreground/60">
                   <span className="mt-0.5 flex-shrink-0 text-gold">✦</span>
                   {item}
                 </li>
@@ -93,7 +93,7 @@ export default function LoyaltySection() {
               </Link>
               <Link
                 to="/rezerwacja"
-                className="inline-flex items-center gap-3 px-10 py-4 text-sm tracking-widest uppercase font-medium text-primary-foreground/40 hover:text-gold transition-colors"
+                className="inline-flex items-center gap-3 px-10 py-4 text-sm tracking-widest uppercase font-medium text-foreground/40 hover:text-gold transition-colors"
               >
                 Zarezerwuj →
               </Link>
@@ -108,14 +108,14 @@ export default function LoyaltySection() {
             transition={{ delay: 0.3, duration: 0.7 }}
             className="relative pt-6 pr-6"
           >
-            <div className="relative p-8 lg:p-10 border border-primary-foreground/10 bg-primary-foreground/[0.03]">
+            <div className="relative p-8 lg:p-10 border border-border/10 bg-secondary/[0.03]">
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-gold" />
               <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-gold" />
 
               <div className="text-center mb-8">
                 <div className="text-xs tracking-[0.4em] uppercase mb-2 font-display text-gold">Wesoły Masaż</div>
-                <div className="text-xs tracking-widest uppercase text-primary-foreground/40">Karta stałego klienta</div>
+                <div className="text-xs tracking-widest uppercase text-foreground/40">Karta stałego klienta</div>
               </div>
 
               {/* Stamps */}
@@ -127,10 +127,10 @@ export default function LoyaltySection() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 + i * 0.08 }}
-                    className={`flex flex-col items-center gap-2 p-3 ${step.gift ? 'border border-gold bg-gold/10' : 'border border-primary-foreground/10'}`}
+                    className={`flex flex-col items-center gap-2 p-3 ${step.gift ? 'border border-gold bg-gold/10' : 'border border-border/10'}`}
                   >
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center ${step.gift ? 'border border-gold bg-gold text-obsidian font-bold' : 'border border-primary-foreground/20 text-primary-foreground/30'}`}
+                      className={`w-10 h-10 rounded-full flex items-center justify-center ${step.gift ? 'border border-gold bg-gold text-obsidian font-bold' : 'border border-border/20 text-foreground/30'}`}
                     >
                       {step.gift ? (
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -144,7 +144,7 @@ export default function LoyaltySection() {
                         <span className="font-mono text-xs">{step.num}</span>
                       )}
                     </div>
-                    <span className={`text-xs tracking-wider ${step.gift ? 'text-gold font-medium' : 'text-primary-foreground/30'}`}>
+                    <span className={`text-xs tracking-wider ${step.gift ? 'text-gold font-medium' : 'text-foreground/30'}`}>
                       {step.label}
                     </span>
                   </motion.div>
@@ -153,7 +153,7 @@ export default function LoyaltySection() {
 
               <div className="text-center">
                 <div className="h-px mb-4" style={{ background: 'linear-gradient(90deg, transparent, #C9A96E, transparent)' }} />
-                <p className="text-xs tracking-widest uppercase text-primary-foreground/30">
+                <p className="text-xs tracking-widest uppercase text-foreground/30">
                   Każda wizyta przybliża Cię do nagrody
                 </p>
               </div>
