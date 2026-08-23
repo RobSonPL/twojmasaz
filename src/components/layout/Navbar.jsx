@@ -10,6 +10,8 @@ const NAV_LINKS = [
   { href: '/#jak-to-dziala', label: 'Jak to działa' },
   { href: '/#galeria', label: 'Galeria' },
   { href: '/#opinie', label: 'Opinie' },
+  { href: '/#wspolpraca', label: 'Współpraca' },
+  { href: '/#kalkulator', label: 'Cennik' },
   { href: '/vouchery', label: 'Vouchery' },
   { href: '/pakiety', label: 'Pakiety' },
 ];

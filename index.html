@@ -83,6 +83,19 @@
 
     <!-- Content-Security-Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.stripe.com https://api.base44.com https://fonts.googleapis.com; frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com;" />
+
+    <!-- Apply theme before paint to prevent flash -->
+    <script>
+      (function() {
+        var saved = localStorage.getItem('wm-theme');
+        var validThemes = ['light-color', 'light-bw', 'dark-color', 'dark-bw'];
+        var theme = validThemes.indexOf(saved) !== -1 ? saved : 'light-color';
+        var root = document.documentElement;
+        root.classList.remove('dark', 'theme-bw');
+        if (theme === 'dark-color' || theme === 'dark-bw') root.classList.add('dark');
+        if (theme === 'light-bw' || theme === 'dark-bw') root.classList.add('theme-bw');
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
