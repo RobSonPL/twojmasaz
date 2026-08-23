@@ -1,0 +1,43 @@
+{
+  "name": "Review",
+  "type": "object",
+  "properties": {
+    "author_name": {
+      "type": "string",
+      "description": "Imi\u0119 lub nick autora opinii"
+    },
+    "rating": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 6,
+      "description": "Ocena w skali 1-6 gwiazdek"
+    },
+    "text": {
+      "type": "string",
+      "description": "Tre\u015b\u0107 opinii"
+    },
+    "service_name": {
+      "type": "string",
+      "description": "Opcjonalnie: nazwa us\u0142ugi"
+    }
+  },
+  "required": [
+    "author_name",
+    "rating",
+    "text"
+  ],
+  "rls": {
+    "create": null,
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

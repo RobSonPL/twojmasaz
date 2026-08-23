@@ -4,33 +4,48 @@ import { X, ZoomIn } from 'lucide-react';
 
 const photos = [
   {
-    url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=85&auto=format&fit=crop',
-    caption: 'Masaż relaksacyjny',
+    url: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=85&auto=format&fit=crop',
+    caption: 'Wnętrze salonu — strefa relaksu',
     span: 'row-span-2',
   },
   {
     url: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700&q=85&auto=format&fit=crop',
-    caption: 'Aromaterapia',
+    caption: 'Aromaterapia — naturalne olejki',
     span: '',
   },
   {
     url: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=700&q=85&auto=format&fit=crop',
-    caption: 'Masaż terapeutyczny',
+    caption: 'Masaż terapeutyczny — rozluźnianie napięć',
     span: '',
   },
   {
-    url: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=85&auto=format&fit=crop',
-    caption: 'Strefa relaksu',
+    url: 'https://images.unsplash.com/photo-1540555700478-4be28fbed1cd?w=900&q=85&auto=format&fit=crop',
+    caption: 'Masaż gorącymi kamieniami',
     span: '',
   },
   {
-    url: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=900&q=85&auto=format&fit=crop',
-    caption: 'Profesjonalne zabiegi',
+    url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=85&auto=format&fit=crop',
+    caption: 'Masaż relaksacyjny — efekt głębokiego odprężenia',
     span: 'row-span-2',
   },
   {
     url: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=700&q=85&auto=format&fit=crop',
-    caption: 'Pielęgnacja twarzy',
+    caption: 'Masaż i pielęgnacja twarzy',
+    span: '',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=700&q=85&auto=format&fit=crop',
+    caption: 'Sala zabiegowa — profesjonalny sprzęt',
+    span: '',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1605336113154-a3eed0e0a0c0?w=900&q=85&auto=format&fit=crop',
+    caption: 'Atmosfera — świece i ciepłe światło',
+    span: '',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1583944106146-8e0d3a3e2c1f?w=700&q=85&auto=format&fit=crop',
+    caption: 'Masaż stóp i refleksologia',
     span: '',
   },
 ];
@@ -102,7 +117,7 @@ export default function GallerySection() {
             transition={{ delay: 0.25 }}
             className="text-muted-foreground text-lg max-w-sm lg:pb-2"
           >
-            Ciepłe światło, naturalne aromaty i cisza — przestrzeń stworzona z myślą o głębokim relaksie.
+            Zajrzyj do wnętrza naszego salonu i zobacz efekty masaży — ciepłe światło, naturalne aromaty i przestrzeń stworzona z myślą o głębokim relaksie.
           </motion.p>
         </div>
 
