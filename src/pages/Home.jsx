@@ -7,7 +7,7 @@ import HowItWorksSection from '@/components/home/HowItWorksSection';
 import VoucherCTA from '@/components/home/VoucherCTA';
 import GallerySection from '@/components/home/GallerySection';
 import LoyaltySection from '@/components/home/LoyaltySection';
-import GoogleReviewsSection from '@/components/home/GoogleReviewsSection';
+import TestimonialsSection from '@/components/home/TestimonialsSection';
 import FaqSection from '@/components/home/FaqSection';
 import ContactSection from '@/components/home/ContactSection';
 import AssistantChat from '@/components/chat/AssistantChat';
@@ -29,7 +29,7 @@ export default function Home() {
       <GallerySection />
       <LoyaltySection />
       <VoucherCTA />
-      <GoogleReviewsSection />
+      <TestimonialsSection />
       <FaqSection />
       <ContactSection />
       <AssistantChat />
