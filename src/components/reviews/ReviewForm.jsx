@@ -43,13 +43,13 @@ export default function ReviewForm({ onSubmitted }) {
       initial={{ opacity: 0, height: 0 }}
       animate={{ opacity: 1, height: 'auto' }}
       onSubmit={handleSubmit}
-      className="mb-12 border border-primary-foreground/10 p-6 lg:p-8 overflow-hidden"
+      className="mb-12 border border-border/10 p-6 lg:p-8 overflow-hidden"
     >
-      <h3 className="font-display text-2xl text-primary-foreground mb-6">Podziel się opinią</h3>
+      <h3 className="font-display text-2xl text-foreground mb-6">Podziel się opinią</h3>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <div>
-          <label className="block text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-2">
+          <label className="block text-xs tracking-[0.2em] uppercase text-foreground/40 mb-2">
             Imię / nick *
           </label>
           <input
@@ -57,12 +57,12 @@ export default function ReviewForm({ onSubmitted }) {
             value={authorName}
             onChange={(e) => setAuthorName(e.target.value)}
             maxLength={60}
-            className="w-full bg-transparent border border-primary-foreground/15 px-4 py-3 text-primary-foreground focus:border-gold outline-none transition-colors"
+            className="w-full bg-transparent border border-border/15 px-4 py-3 text-foreground focus:border-gold outline-none transition-colors"
             placeholder="np. Anna K."
           />
         </div>
         <div>
-          <label className="block text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-2">
+          <label className="block text-xs tracking-[0.2em] uppercase text-foreground/40 mb-2">
             Usługa (opcjonalnie)
           </label>
           <input
@@ -70,14 +70,14 @@ export default function ReviewForm({ onSubmitted }) {
             value={serviceName}
             onChange={(e) => setServiceName(e.target.value)}
             maxLength={80}
-            className="w-full bg-transparent border border-primary-foreground/15 px-4 py-3 text-primary-foreground focus:border-gold outline-none transition-colors"
+            className="w-full bg-transparent border border-border/15 px-4 py-3 text-foreground focus:border-gold outline-none transition-colors"
             placeholder="np. Masaż relaksacyjny"
           />
         </div>
       </div>
 
       <div className="mb-6">
-        <label className="block text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-3">
+        <label className="block text-xs tracking-[0.2em] uppercase text-foreground/40 mb-3">
           Ocena (1-6 gwiazdek)
         </label>
         <div className="flex gap-2">
@@ -94,7 +94,7 @@ export default function ReviewForm({ onSubmitted }) {
               >
                 <Star
                   size={28}
-                  className={(hover || rating) >= val ? 'text-gold fill-gold' : 'text-primary-foreground/20'}
+                  className={(hover || rating) >= val ? 'text-gold fill-gold' : 'text-foreground/20'}
                 />
               </button>
             );
@@ -103,7 +103,7 @@ export default function ReviewForm({ onSubmitted }) {
       </div>
 
       <div className="mb-6">
-        <label className="block text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-2">
+        <label className="block text-xs tracking-[0.2em] uppercase text-foreground/40 mb-2">
           Treść opinii *
         </label>
         <textarea
@@ -111,7 +111,7 @@ export default function ReviewForm({ onSubmitted }) {
           onChange={(e) => setText(e.target.value)}
           maxLength={600}
           rows={4}
-          className="w-full bg-transparent border border-primary-foreground/15 px-4 py-3 text-primary-foreground focus:border-gold outline-none transition-colors resize-none"
+          className="w-full bg-transparent border border-border/15 px-4 py-3 text-foreground focus:border-gold outline-none transition-colors resize-none"
           placeholder="Opisz swoje wrażenia z wizyty..."
         />
       </div>
