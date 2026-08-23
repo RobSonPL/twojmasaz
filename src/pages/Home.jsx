@@ -27,6 +27,7 @@ export default function Home() {
   return (
     <PageLayout>
       <HeroSection />
+      {/* B2B partners */}
       <B2BSection />
       <ServicesSection services={services} />
       <PriceCalculator />

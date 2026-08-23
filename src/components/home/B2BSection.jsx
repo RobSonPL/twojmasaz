@@ -71,7 +71,7 @@ export default function B2BSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="group border border-border bg-card p-6 lg:p-8 hover:border-gold/40 transition-all duration-400 flex flex-col"
+              className="group border border-border bg-card p-6 lg:p-8 hover:border-gold/40 transition-all duration-300 flex flex-col"
             >
               <div className="flex items-start justify-between mb-5">
                 <div className="w-11 h-11 border border-gold/30 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-obsidian transition-all duration-300">
