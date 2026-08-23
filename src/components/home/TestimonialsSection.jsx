@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Star, Plus, X } from 'lucide-react';
+import { Star, Plus, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { base44 } from '@/api/base44Client';
 import ReviewForm from '@/components/reviews/ReviewForm';
 import ReviewCard from '@/components/reviews/ReviewCard';
@@ -9,10 +10,11 @@ export default function TestimonialsSection() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
 
   const loadReviews = async () => {
     try {
-      const data = await base44.entities.Review.list('-created_date', 200);
+      const data = await base44.entities.Review.list('-created_date', 20);
       setReviews(data);
     } catch (e) {
       setReviews([]);
@@ -23,8 +25,9 @@ export default function TestimonialsSection() {
   useEffect(() => { loadReviews(); }, []);
 
   const handleSubmitted = (newReview) => {
-    setReviews(prev => [newReview, ...prev]);
+    setReviews(prev => [newReview, ...prev].slice(0, 20));
     setShowForm(false);
+    setTimeout(() => emblaApi?.scrollTo(0), 100);
   };
 
   const avgRating = reviews.length > 0
@@ -75,7 +78,7 @@ export default function TestimonialsSection() {
           <div className="text-center md:text-left">
             <div className="font-mono text-5xl text-primary-foreground">{avgRating}</div>
             <div className="text-primary-foreground/30 text-xs tracking-widest uppercase mt-2">
-              Średnia z {reviews.length} {reviews.length === 1 ? 'opinii' : 'opinii'}
+              Średnia z {reviews.length} opinii
             </div>
           </div>
           <div className="flex gap-1">
@@ -91,7 +94,7 @@ export default function TestimonialsSection() {
         {/* Form */}
         {showForm && <ReviewForm onSubmitted={handleSubmitted} />}
 
-        {/* Reviews grid */}
+        {/* Reviews slider */}
         {loading ? (
           <div className="flex items-center justify-center py-20">
             <div className="w-8 h-8 border-2 border-primary-foreground/20 border-t-gold rounded-full animate-spin" />
@@ -107,10 +110,37 @@ export default function TestimonialsSection() {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {reviews.map((r, i) => (
-              <ReviewCard key={r.id} review={r} index={i} />
-            ))}
+          <div className="relative">
+            <div ref={emblaRef} className="overflow-hidden">
+              <div className="flex gap-6">
+                {reviews.map((r, i) => (
+                  <div
+                    key={r.id}
+                    className="min-w-0 shrink-0 grow-0 basis-full lg:basis-[calc(50%-12px)]"
+                  >
+                    <ReviewCard review={r} index={i} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <div className="flex justify-center gap-3 mt-10">
+              <button
+                onClick={() => emblaApi?.scrollPrev()}
+                className="w-12 h-12 flex items-center justify-center border border-gold/30 text-gold hover:bg-gold hover:text-obsidian transition-all duration-300"
+                aria-label="Poprzednia opinia"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={() => emblaApi?.scrollNext()}
+                className="w-12 h-12 flex items-center justify-center border border-gold/30 text-gold hover:bg-gold hover:text-obsidian transition-all duration-300"
+                aria-label="Następna opinia"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
           </div>
         )}
       </div>

@@ -142,10 +142,6 @@ export default function HeroSection() {
               <div className="text-primary-foreground/40 text-xs tracking-widest uppercase mt-1">Średnia ocen klientów</div>
             </div>
             <div className="border-l border-gold/30 pl-6">
-              <div className="font-mono text-4xl text-primary-foreground font-medium">500+</div>
-              <div className="text-primary-foreground/40 text-xs tracking-widest uppercase mt-1">Zadowolonych klientów</div>
-            </div>
-            <div className="border-l border-gold/30 pl-6">
               <div className="font-mono text-4xl text-primary-foreground font-medium">6</div>
               <div className="text-primary-foreground/40 text-xs tracking-widest uppercase mt-1">Rodzajów masażu</div>
             </div>

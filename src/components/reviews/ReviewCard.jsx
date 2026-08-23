@@ -7,10 +7,9 @@ export default function ReviewCard({ review, index = 0 }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-30px' }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ delay: Math.min(index * 0.04, 0.4), duration: 0.5 }}
-      className="border border-primary-foreground/10 p-6 hover:border-gold/20 transition-all duration-500 group flex flex-col"
+      className="border border-primary-foreground/10 p-6 hover:border-gold/20 transition-all duration-500 group flex flex-col h-full"
     >
       <div className="flex gap-1 mb-4">
         {Array.from({ length: 6 }).map((_, i) => (
