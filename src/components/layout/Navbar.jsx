@@ -4,6 +4,7 @@ import { Menu, X, User, LayoutDashboard } from 'lucide-react';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 import { useTheme } from '@/lib/ThemeContext';
 import { useAuth } from '@/lib/AuthContext';
+import { NavbarAvailability } from '@/components/home/LiveAvailability';
 
 const NAV_LINKS = [
   { href: '/#uslugi', label: 'Usługi' },
@@ -66,6 +67,7 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-4">
+          <NavbarAvailability />
           <ThemeSwitcher />
           {user?.email === 'irena@wesolymasaz.pl' && (
             <Link

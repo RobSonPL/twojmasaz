@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowDownRight } from 'lucide-react';
+import LiveAvailability from '@/components/home/LiveAvailability';
+
+const HERO_VIDEO_URL = 'https://media.base44.com/videos/public/6a2baccccdddab5d8fdcec15/8342f4ddb_Hero_Spa_Background.mp4';
+const HERO_FALLBACK_IMG = 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1800&q=80&auto=format&fit=crop';
 
 export default function HeroSection() {
   const heroRef = useRef(null);
@@ -31,17 +35,29 @@ export default function HeroSection() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background */}
+      {/* Background — video with fallback image */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-background" />
+        {/* Fallback image (also shows on mobile / before video loads) */}
         <div
-          className="absolute inset-0 opacity-[0.07]"
+          className="absolute inset-0 opacity-[0.08]"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1800&q=80&auto=format&fit=crop')`,
+            backgroundImage: `url('${HERO_FALLBACK_IMG}')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
+        {/* Video layer — hidden on small screens for performance */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.12] hidden md:block"
+          aria-hidden="true"
+        >
+          <source src={HERO_VIDEO_URL} type="video/mp4" />
+        </video>
       </div>
 
       {/* Floating cursor CTA */}
@@ -144,13 +160,7 @@ export default function HeroSection() {
               <div className="text-foreground/40 text-xs tracking-widest uppercase mt-1">Rodzajów masażu</div>
             </div>
 
-            <div className="mt-4 p-6 border border-border/5 bg-secondary/[0.02]">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-foreground/40 text-xs tracking-widest uppercase">Dostępne terminy</span>
-              </div>
-              <p className="text-foreground/70 text-sm">Dojazd do klienta i salon stacjonarny — wybierz opcję, która Ci odpowiada.</p>
-            </div>
+            <LiveAvailability />
           </motion.div>
         </div>
       </div>
