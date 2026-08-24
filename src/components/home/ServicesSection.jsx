@@ -4,48 +4,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Home, Building2 } from 'lucide-react';
 
 const defaultServices = [
-  {
-    id: '1', name: 'Masaż Klasyczny', category: 'relaksacyjny',
-    price: 150, duration_minutes: 60,
-    description: 'Relaksujący masaż całego ciała technikami klasycznymi — uśmierza napięcia i poprawia krążenie.',
-    is_available_home: true, is_available_studio: true,
-    image_url: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=800&q=80&auto=format&fit=crop'
-  },
-  {
-    id: '2', name: 'Masaż Głęboki', category: 'terapeutyczny',
-    price: 180, duration_minutes: 60,
-    description: 'Intensywna praca na głębszych warstwach mięśni — ideał przy chronicznych bólach i przykurczach.',
-    is_available_home: true, is_available_studio: true,
-    image_url: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80&auto=format&fit=crop'
-  },
-  {
-    id: '3', name: 'Masaż Relaksacyjny', category: 'relaksacyjny',
-    price: 200, duration_minutes: 90,
-    description: 'Długi, kojący masaż z aromaterapią — pełne odprężenie ciała i umysłu.',
-    is_available_home: true, is_available_studio: true,
-    image_url: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&q=80&auto=format&fit=crop'
-  },
-  {
-    id: '4', name: 'Gorące Kamienie', category: 'specjalistyczny',
-    price: 250, duration_minutes: 90,
-    description: 'Masaż bazaltowymi kamieniami wulkanicznymi — głęboka relaksacja i poprawa metabolizmu.',
-    is_available_home: false, is_available_studio: true,
-    image_url: 'https://images.unsplash.com/photo-1580161520529-5e2e0a3a6d6b?w=800&q=80&auto=format&fit=crop'
-  },
-  {
-    id: '5', name: 'Masaż Sportowy', category: 'sportowy',
-    price: 170, duration_minutes: 60,
-    description: 'Dedykowany sportowcom — przyspiesza regenerację, zmniejsza ryzyko kontuzji.',
-    is_available_home: true, is_available_studio: true,
-    image_url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80&auto=format&fit=crop'
-  },
-  {
-    id: '6', name: 'Masaż Twarzy', category: 'specjalistyczny',
-    price: 100, duration_minutes: 30,
-    description: 'Delikatny lifting manualny i drenaż limfatyczny — promienna cera i redukcja napięć.',
-    is_available_home: false, is_available_studio: true,
-    image_url: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&q=80&auto=format&fit=crop'
-  },
+  { id: '1', name: 'Masaż Całościowy', category: 'relaksacyjny', price: 200, duration_minutes: 60, description: 'Kompleksowy masaż całego ciała łączący techniki relaksacyjne i terapeutyczne.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=800&q=80&auto=format&fit=crop' },
+  { id: '2', name: 'Masaż Klasyczny', category: 'relaksacyjny', price: 200, duration_minutes: 60, description: 'Tradycyjny masaż klasyczny — ulga w napięciach, poprawa krążenia i ogólne odprężenie.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80&auto=format&fit=crop' },
+  { id: '3', name: 'Masaż Głęboki', category: 'terapeutyczny', price: 150, duration_minutes: 30, description: 'Intensywna praca na głębszych warstwach mięśni — przy chronicznych bólach i przykurczach.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80&auto=format&fit=crop' },
+  { id: '4', name: 'Masaż Gorącymi Kamieniami', category: 'specjalistyczny', price: 200, duration_minutes: 60, description: 'Masaż bazaltowymi kamieniami wulkanicznymi — głęboka relaksacja i poprawa metabolizmu.', is_available_home: false, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1580161520529-5e2e0a3a6d6b?w=800&q=80&auto=format&fit=crop' },
+  { id: '5', name: 'Masaż Sportowy', category: 'sportowy', price: 200, duration_minutes: 60, description: 'Dedykowany sportowcom — przyspiesza regenerację i zmniejsza ryzyko kontuzji.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80&auto=format&fit=crop' },
+  { id: '6', name: 'Masaż Twarzy', category: 'specjalistyczny', price: 100, duration_minutes: 30, description: 'Delikatny lifting manualny i drenaż limfatyczny — promienna cera i redukcja napięć.', is_available_home: false, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&q=80&auto=format&fit=crop' },
+  { id: '7', name: 'Masaż Bańką Chińską', category: 'terapeutyczny', price: 100, duration_minutes: 30, description: 'Terapia bańką chińską — uwalnia napięcia, poprawia krążenie i redukuje stany zapalne.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80&auto=format&fit=crop' },
+  { id: '8', name: 'Masaż Nerwu Błędnego', category: 'specjalistyczny', price: 200, duration_minutes: 45, description: 'Stymulacja nerwu błędnego — głębokie uspokojenie układu nerwowego i redukcja stresu.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&q=80&auto=format&fit=crop' },
+  { id: '9', name: 'Drenaż Limfatyczny', category: 'terapeutyczny', price: 200, duration_minutes: 60, description: 'Manualny drenaż limfatyczny — redukcja obrzęków, detoksykacja i poprawa odporności.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1545454394-2d7e2f3f3e1f?w=800&q=80&auto=format&fit=crop' },
+  { id: '10', name: 'Masaż na Zmęczenie', category: 'relaksacyjny', price: 200, duration_minutes: 60, description: 'Masaż przeciwdziałający przemęczeniu — odnowa ciała i umysłu po intensywnym okresie.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1607962618164-87f7c1c6e7b8?w=800&q=80&auto=format&fit=crop' },
+  { id: '11', name: 'Masaż Ból Łopatki/Pleców', category: 'terapeutyczny', price: 200, duration_minutes: 60, description: 'Ukierunkowany masaż na ból łopatki i pleców — rozluźnienie napiętych mięśni grzbietu.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1591343395082-e120087004b7?w=800&q=80&auto=format&fit=crop' },
+  { id: '12', name: 'Masaż Łokieć Tenisisty', category: 'terapeutyczny', price: 100, duration_minutes: 30, description: 'Terapia łokcia tenisisty — precyzyjna praca na przedramieniu i stawie łokciowym.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1576678927484-cc8d17c1e4d5?w=800&q=80&auto=format&fit=crop' },
+  { id: '13', name: 'Masaż Kręgosłupa', category: 'terapeutyczny', price: 200, duration_minutes: 45, description: 'Skoncentrowany masaż kręgosłupa — ulga w bólu i poprawa mobilności.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1591343395082-e120087004b7?w=800&q=80&auto=format&fit=crop' },
+  { id: '14', name: 'Masaż Lędźwi', category: 'terapeutyczny', price: 200, duration_minutes: 60, description: 'Masaż okolicy lędźwiowej — redukcja bólu i napięć w dolnym odcinku pleców.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80&auto=format&fit=crop' },
+  { id: '15', name: 'Masaż Nóg i Ud', category: 'terapeutyczny', price: 200, duration_minutes: 45, description: 'Masaż kończyn dolnych — ulga po wysiłku, redukcja opuchlizny i poprawa krążenia.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1599447338-2f3a3c2e4e4e?w=800&q=80&auto=format&fit=crop' },
+  { id: '16', name: 'Masaż Indywidualny', category: 'specjalistyczny', price: 0, duration_minutes: 120, description: 'Sesja indywidualna 120 min — spersonalizowany plan masażu. Cena do ustalenia indywidualnie.', is_available_home: true, is_available_studio: true, image_url: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80&auto=format&fit=crop' },
 ];
 
 function ServiceRow({ service, index }) {

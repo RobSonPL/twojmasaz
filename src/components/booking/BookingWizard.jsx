@@ -12,12 +12,22 @@ const TIME_SLOTS = [
 ];
 
 const defaultServices = [
-  { id: '1', name: 'Masaż Klasyczny', price: 150, duration_minutes: 60, is_available_home: true, is_available_studio: true },
-  { id: '2', name: 'Masaż Głęboki', price: 180, duration_minutes: 60, is_available_home: true, is_available_studio: true },
-  { id: '3', name: 'Masaż Relaksacyjny', price: 200, duration_minutes: 90, is_available_home: true, is_available_studio: true },
-  { id: '4', name: 'Gorące Kamienie', price: 250, duration_minutes: 90, is_available_home: false, is_available_studio: true },
-  { id: '5', name: 'Masaż Sportowy', price: 170, duration_minutes: 60, is_available_home: true, is_available_studio: true },
+  { id: '1', name: 'Masaż Całościowy', price: 200, duration_minutes: 60, is_available_home: true, is_available_studio: true },
+  { id: '2', name: 'Masaż Klasyczny', price: 200, duration_minutes: 60, is_available_home: true, is_available_studio: true },
+  { id: '3', name: 'Masaż Głęboki', price: 150, duration_minutes: 30, is_available_home: true, is_available_studio: true },
+  { id: '4', name: 'Masaż Gorącymi Kamieniami', price: 200, duration_minutes: 60, is_available_home: false, is_available_studio: true },
+  { id: '5', name: 'Masaż Sportowy', price: 200, duration_minutes: 60, is_available_home: true, is_available_studio: true },
   { id: '6', name: 'Masaż Twarzy', price: 100, duration_minutes: 30, is_available_home: false, is_available_studio: true },
+  { id: '7', name: 'Masaż Bańką Chińską', price: 100, duration_minutes: 30, is_available_home: true, is_available_studio: true },
+  { id: '8', name: 'Masaż Nerwu Błędnego', price: 200, duration_minutes: 45, is_available_home: true, is_available_studio: true },
+  { id: '9', name: 'Drenaż Limfatyczny', price: 200, duration_minutes: 60, is_available_home: true, is_available_studio: true },
+  { id: '10', name: 'Masaż na Zmęczenie', price: 200, duration_minutes: 60, is_available_home: true, is_available_studio: true },
+  { id: '11', name: 'Masaż Ból Łopatki/Pleców', price: 200, duration_minutes: 60, is_available_home: true, is_available_studio: true },
+  { id: '12', name: 'Masaż Łokieć Tenisisty', price: 100, duration_minutes: 30, is_available_home: true, is_available_studio: true },
+  { id: '13', name: 'Masaż Kręgosłupa', price: 200, duration_minutes: 45, is_available_home: true, is_available_studio: true },
+  { id: '14', name: 'Masaż Lędźwi', price: 200, duration_minutes: 60, is_available_home: true, is_available_studio: true },
+  { id: '15', name: 'Masaż Nóg i Ud', price: 200, duration_minutes: 45, is_available_home: true, is_available_studio: true },
+  { id: '16', name: 'Masaż Indywidualny', price: 0, duration_minutes: 120, is_available_home: true, is_available_studio: true },
 ];
 
 function StepIndicator({ currentStep, totalSteps }) {
