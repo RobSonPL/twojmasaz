@@ -95,7 +95,7 @@ function StepService({ services, booking, onChange, onNext }) {
                 </div>
               </div>
               <div className="text-right flex-shrink-0">
-                <div className="font-mono font-medium">{service.price} PLN</div>
+                <div className="font-mono font-medium">{service.price === 0 ? 'Do ustalenia' : `${service.price} PLN`}</div>
                 <div className="text-xs text-muted-foreground">{service.duration_minutes} min</div>
               </div>
             </div>
@@ -382,7 +382,7 @@ function StepDetails({ booking, onChange, onSubmit, onBack, submitting }) {
           </div>
           <div className="border-t border-gold/20 pt-3 flex justify-between">
             <span className="font-medium">Do zapłaty</span>
-            <span className="font-mono font-medium text-gold">{booking.service_price} PLN</span>
+            <span className="font-mono font-medium text-gold">{booking.service_price === 0 ? 'Do ustalenia' : `${booking.service_price} PLN`}</span>
           </div>
         </div>
       </aside>
@@ -447,7 +447,7 @@ function StepConfirmation({ booking }) {
           </div>
           <div className="flex justify-between">
             <span className="text-muted-foreground">Kwota</span>
-            <span className="font-mono font-medium text-gold">{booking.service_price} PLN</span>
+            <span className="font-mono font-medium text-gold">{booking.service_price === 0 ? 'Do ustalenia' : `${booking.service_price} PLN`}</span>
           </div>
         </div>
       </div>

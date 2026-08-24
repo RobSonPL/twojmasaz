@@ -65,7 +65,7 @@ function ServiceRow({ service, index }) {
           <div className="flex items-center gap-8 flex-shrink-0">
             <div className="text-right hidden sm:block">
               <div className="font-mono text-lg lg:text-xl font-medium text-foreground">
-                {service.price} PLN
+                {service.price === 0 ? 'Do ustalenia' : `${service.price} PLN`}
               </div>
               <div className="text-xs text-muted-foreground tracking-widest">
                 {service.duration_minutes} MIN
@@ -97,7 +97,7 @@ function ServiceRow({ service, index }) {
                     {service.description}
                   </p>
                   <div className="flex gap-4 mt-4 sm:hidden">
-                    <span className="font-mono text-sm font-medium">{service.price} PLN</span>
+                    <span className="font-mono text-sm font-medium">{service.price === 0 ? 'Do ustalenia' : `${service.price} PLN`}</span>
                     <span className="text-muted-foreground text-sm">{service.duration_minutes} min</span>
                   </div>
                 </div>

@@ -174,7 +174,7 @@ export function clientConfirmationEmail(booking) {
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
             <tr>
               <td style="font-size:14px;color:${MUTED};letter-spacing:0.1em;text-transform:uppercase;">Do zapłaty</td>
-              <td align="right" style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;color:${OBSIDIAN};">${booking.service_price} PLN</td>
+              <td align="right" style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;color:${OBSIDIAN};">${booking.service_price === 0 ? 'Do ustalenia' : `${booking.service_price} PLN`}</td>
             </tr>
           </table>
         </td>
@@ -229,7 +229,7 @@ export function ownerNotificationEmail(booking) {
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
             <tr>
               <td style="font-size:14px;color:${MUTED};letter-spacing:0.1em;text-transform:uppercase;">Kwota</td>
-              <td align="right" style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;color:${OBSIDIAN};">${booking.service_price} PLN</td>
+              <td align="right" style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;color:${OBSIDIAN};">${booking.service_price === 0 ? 'Do ustalenia' : `${booking.service_price} PLN`}</td>
             </tr>
           </table>
         </td>

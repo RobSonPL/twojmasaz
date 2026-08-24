@@ -145,7 +145,7 @@ export default function PriceCalculator() {
                 <div className="flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">
                   <Wallet size={12} /> Cena
                 </div>
-                <div className="font-mono text-3xl text-foreground font-medium">{selected.price} PLN</div>
+                <div className="font-mono text-3xl text-foreground font-medium">{selected.price === 0 ? 'Do ustalenia' : `${selected.price} PLN`}</div>
               </div>
               <div>
                 <div className="flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">
