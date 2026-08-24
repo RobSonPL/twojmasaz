@@ -25,6 +25,46 @@ function formatDatePL(dateStr) {
   return `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+// Build a Google Calendar "add event" link
+function googleCalendarLink(booking) {
+  // booking_date = "2026-08-26", booking_time = "10:00"
+  const startStr = `${booking.booking_date}T${booking.booking_time}:00`;
+  const start = new Date(startStr);
+  const durationMin = booking.service_duration || 60;
+  const end = new Date(start.getTime() + durationMin * 60000);
+
+  // Format to UTC: YYYYMMDDTHHMMSSZ
+  const toICS = (d) =>
+    d.getUTCFullYear().toString() +
+    String(d.getUTCMonth() + 1).padStart(2, '0') +
+    String(d.getUTCDate()).padStart(2, '0') + 'T' +
+    String(d.getUTCHours()).padStart(2, '0') +
+    String(d.getUTCMinutes()).padStart(2, '0') +
+    String(d.getUTCSeconds()).padStart(2, '0') + 'Z';
+
+  const text = encodeURIComponent(`Masaż — ${booking.service_name} | Wesoły Masaż`);
+  const dates = encodeURIComponent(`${toICS(start)}/${toICS(end)}`);
+  const details = encodeURIComponent(
+    `Rezerwacja: ${booking.service_name}\nKlient: ${booking.client_name}\nTelefon: ${booking.client_phone}` +
+    (booking.notes ? `\nUwagi: ${booking.notes}` : '')
+  );
+  const location = encodeURIComponent(
+    booking.booking_type === 'home' && booking.address
+      ? booking.address
+      : 'Wesoły Masaż — Salon stacjonarny'
+  );
+
+  return `https://www.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${dates}&details=${details}&location=${location}`;
+}
+
+// Calendar button used in both emails
+function calendarButton(gcalUrl) {
+  return `
+    <a href="${gcalUrl}" target="_blank" rel="noopener" style="display:inline-block;border:1px solid ${GOLD};color:${GOLD};text-decoration:none;padding:12px 28px;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;border-radius:2px;margin-top:8px;">
+      📅 Dodaj do kalendarza Google
+    </a>`;
+}
+
 // Shared email shell — header + footer wrapper
 function emailShell(content, title) {
   return `<!DOCTYPE html>
@@ -147,6 +187,11 @@ export function clientConfirmationEmail(booking) {
     </p>
 
     <a href="https://wa.me/48787907141" style="display:inline-block;background-color:#25D366;color:#FFFFFF;text-decoration:none;padding:14px 32px;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;border-radius:2px;">Napisz przez WhatsApp</a>
+
+    <div style="margin-top:24px;padding-top:24px;border-top:1px solid ${BORDER};">
+      <div style="font-size:12px;color:${MUTED};letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Dodaj wizytę do kalendarza</div>
+      ${calendarButton(googleCalendarLink(booking))}
+    </div>
   `;
 
   return {
@@ -193,6 +238,11 @@ export function ownerNotificationEmail(booking) {
 
     <a href="tel:${escapeHTML(booking.client_phone || '')}" style="display:inline-block;background-color:${OBSIDIAN};color:#FAFAFA;text-decoration:none;padding:14px 32px;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;border-radius:2px;margin-right:12px;">Zadzwoń do klienta</a>
     <a href="mailto:${escapeHTML(booking.client_email || '')}" style="display:inline-block;border:1px solid ${GOLD};color:${GOLD};text-decoration:none;padding:14px 32px;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;border-radius:2px;">Napisz e-mail</a>
+
+    <div style="margin-top:24px;padding-top:24px;border-top:1px solid ${BORDER};">
+      <div style="font-size:12px;color:${MUTED};letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Dodaj do kalendarza</div>
+      ${calendarButton(googleCalendarLink(booking))}
+    </div>
   `;
 
   return {
