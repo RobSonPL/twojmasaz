@@ -14,6 +14,7 @@ import LoyaltySection from '@/components/home/LoyaltySection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import FaqSection from '@/components/home/FaqSection';
 import ContactSection from '@/components/home/ContactSection';
+import ShareButtons from '@/components/home/ShareButtons';
 import AssistantChat from '@/components/chat/AssistantChat';
 
 export default function Home() {
@@ -41,6 +42,9 @@ export default function Home() {
       <TestimonialsSection />
       <FaqSection />
       <ContactSection />
+      <section className="section-padding bg-background">
+        <ShareButtons title="Poleć Wesoły Masaż znajomym" />
+      </section>
       <AssistantChat />
     </PageLayout>
   );

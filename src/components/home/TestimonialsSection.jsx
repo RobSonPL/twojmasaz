@@ -5,6 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { base44 } from '@/api/base44Client';
 import ReviewForm from '@/components/reviews/ReviewForm';
 import ReviewCard from '@/components/reviews/ReviewCard';
+import ShareButtons from '@/components/home/ShareButtons';
 
 export default function TestimonialsSection() {
   const [reviews, setReviews] = useState([]);
@@ -143,6 +144,11 @@ export default function TestimonialsSection() {
             </div>
           </div>
         )}
+
+        {/* Share buttons */}
+        <div className="mt-16 pt-12 border-t border-border/10">
+          <ShareButtons compact title="Poleć nas znajomym" />
+        </div>
       </div>
     </section>
   );
