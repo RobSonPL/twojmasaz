@@ -4,6 +4,7 @@ import { base44 } from '@/api/base44Client';
 import { Home, Building2, ChevronLeft, Check, Loader2 } from 'lucide-react';
 import { format, addDays, startOfToday, isBefore, isToday } from 'date-fns';
 import { pl } from 'date-fns/locale';
+import { clientConfirmationEmail, ownerNotificationEmail } from '@/lib/emailTemplates';
 
 const TIME_SLOTS = [
   '09:00', '10:00', '11:00', '12:00', '13:00',
@@ -485,15 +486,29 @@ export default function BookingWizard() {
     setSubmitting(true);
     try {
       await base44.entities.Booking.create({ ...booking, status: 'confirmed' });
-      // Send confirmation email
+
+      // Send branded HTML confirmation email to client
       try {
+        const clientEmail = clientConfirmationEmail(booking);
         await base44.integrations.Core.SendEmail({
           to: booking.client_email,
-          subject: `Potwierdzenie rezerwacji — ${booking.service_name}`,
-          body: `Cześć ${booking.client_name}!\n\nTwoja rezerwacja jest potwierdzona:\n\nUsługa: ${booking.service_name}\nData: ${booking.booking_date}\nGodzina: ${booking.booking_time}\nTryb: ${booking.booking_type === 'home' ? 'Dojazd do klienta' : 'Salon stacjonarny'}${booking.address ? '\nAdres: ' + booking.address : ''}\nCena: ${booking.service_price} PLN\n\nDo zobaczenia!\nWesoły Masaż`
+          subject: clientEmail.subject,
+          body: clientEmail.body,
         });
       } catch (e) {
         // email failure doesn't block confirmation
+      }
+
+      // Send notification email to owner with full booking details
+      try {
+        const ownerEmail = ownerNotificationEmail(booking);
+        await base44.integrations.Core.SendEmail({
+          to: 'irena@wesolymasaz.pl',
+          subject: ownerEmail.subject,
+          body: ownerEmail.body,
+        });
+      } catch (e) {
+        // owner notification failure doesn't block confirmation
       }
       setConfirmed(true);
     } finally {
