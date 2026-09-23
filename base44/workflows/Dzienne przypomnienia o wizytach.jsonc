@@ -1,0 +1,46 @@
+{
+  "name": "Dzienne przypomnienia o wizytach",
+  "description": "Wysy\u0142a e-mail z przypomnieniem do wszystkich klient\u00f3w z rezerwacj\u0105 na nast\u0119pny dzie\u0144",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 6 * * *",
+      "one_time_date": null,
+      "timezone": "UTC",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "dzienne_przypomnienia_o_wizytach",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "run_function": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendBookingReminders",
+            "args": {
+              "scheduler_token": "wm-sched-0ce06e31539cd065d6a57a46fd9b4b6d891f3c4b83961da5"
+            }
+          },
+          "then": "end"
+        }
+      }
+    ]
+  },
+  "x-base44-migrated-from-automation": {
+    "legacy_payload_function": "sendBookingReminders"
+  }
+}
