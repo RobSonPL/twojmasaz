@@ -4,7 +4,7 @@ import { Menu, X, User, LayoutDashboard } from 'lucide-react';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 import { useTheme } from '@/lib/ThemeContext';
 import { useAuth } from '@/lib/AuthContext';
-import { NavbarAvailability } from '@/components/home/LiveAvailability';
+import { Phone, Mail } from 'lucide-react';
 
 const NAV_LINKS = [
   { href: '/#uslugi', label: 'Usługi' },
@@ -67,7 +67,16 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-4">
-          <NavbarAvailability />
+          <div className="hidden lg:flex items-center gap-4 text-xs text-muted-foreground">
+            <a href="tel:+48787907141" className="flex items-center gap-1.5 hover:text-gold transition-colors tracking-wider">
+              <Phone size={12} />
+              <span className="font-mono">+48 787 907 141</span>
+            </a>
+            <a href="mailto:irena@wesolymasaz.pl" className="flex items-center gap-1.5 hover:text-gold transition-colors tracking-wider">
+              <Mail size={12} />
+              <span>irena@wesolymasaz.pl</span>
+            </a>
+          </div>
           <ThemeSwitcher />
           {user?.email === 'irena@wesolymasaz.pl' && (
             <Link
