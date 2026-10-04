@@ -53,7 +53,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -66,8 +66,14 @@ export default function Navbar() {
         </nav>
 
         {/* Right side */}
-        <div className="flex items-center gap-4">
-          <div className="hidden lg:flex items-center gap-4 text-xs text-muted-foreground">
+        <div className="flex items-center gap-3">
+          <Link
+            to="/rezerwacja"
+            className="inline-flex items-center gap-2 bg-gold text-obsidian px-5 py-2.5 text-xs tracking-widest uppercase font-medium hover:bg-gold-light transition-colors duration-300 focus-gold"
+          >
+            Zarezerwuj
+          </Link>
+          <div className="hidden xl:flex items-center gap-4 text-xs text-muted-foreground">
             <a href="tel:+48787907141" className="flex items-center gap-1.5 hover:text-gold transition-colors tracking-wider">
               <Phone size={12} />
               <span className="font-mono">+48 787 907 141</span>
@@ -93,12 +99,6 @@ export default function Navbar() {
             title="Moje konto"
           >
             <User size={14} />
-          </Link>
-          <Link
-            to="/rezerwacja"
-            className="hidden md:inline-flex items-center gap-2 bg-gold text-obsidian px-5 py-2 text-xs tracking-widest uppercase font-medium hover:bg-gold-light transition-colors duration-300"
-          >
-            Rezerwuj
           </Link>
           {/* Mobile hamburger */}
           <button
