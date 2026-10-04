@@ -4,6 +4,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import HeroSection from '@/components/home/HeroSection';
 import B2BSection from '@/components/home/B2BSection';
 import ServicesSection from '@/components/home/ServicesSection';
+import AboutSection from '@/components/home/AboutSection';
 import AIAdvisorSection from '@/components/home/AIAdvisorSection';
 import PriceCalculator from '@/components/home/PriceCalculator';
 import ReachMapSection from '@/components/home/ReachMapSection';
@@ -32,6 +33,7 @@ export default function Home() {
       {/* B2B partners */}
       <B2BSection />
       <ServicesSection services={services} />
+      <AboutSection />
       <AIAdvisorSection services={services} />
       <PriceCalculator />
       <ReachMapSection />
